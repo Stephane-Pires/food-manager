@@ -12,7 +12,7 @@ export async function getStaticProps() {
 
 export default function Home() {
     return (
-        <Layout home>
+        <Layout>
             <Head>
                 <title>{SITE_TITLE}</title>
             </Head>

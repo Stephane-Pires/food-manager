@@ -1,3 +1,4 @@
+export {}
 // import Head from 'next/head'
 // import { GetStaticPaths, InferGetStaticPropsType } from 'next'
 // import Layout from '../../components/layout'
