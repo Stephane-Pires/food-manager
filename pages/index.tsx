@@ -1,8 +1,16 @@
+import { Center, Text } from '@chakra-ui/layout'
+import {
+    Button,
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper,
+} from '@chakra-ui/react'
 import Head from 'next/head'
 // import Link from 'next/link'
 // import { InferGetStaticPropsType } from 'next'
 import Layout, { SITE_TITLE } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
 
 export async function getStaticProps() {
     return {
@@ -16,20 +24,22 @@ export default function Home() {
             <Head>
                 <title>{SITE_TITLE}</title>
             </Head>
-            <section className={utilStyles.headingMd}>
-                <p>[Your Self Introduction]</p>
-                <p>
-                    (This is a sample website - you’ll be building a site like
-                    this on{' '}
-                    <a href="https://nextjs.org/learn">our Next.js tutorial</a>
-                    .)
-                </p>
-            </section>
-            <section
-                className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}
-            >
-                <h2 className={utilStyles.headingLg}>Blog</h2>
-            </section>
+            <Text fontSize="6xl">Food Manager</Text>
+            <Text fontSize="xl">
+                This tool is about automating the management of food, frige,
+                recipe, scheduling of meal, etc..
+            </Text>
+            <NumberInput>
+                <NumberInputField />
+                <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                </NumberInputStepper>
+            </NumberInput>
+            <Center>
+                <Button>Add number : + 1</Button>
+                <Button>Add number : - 1</Button>
+            </Center>
         </Layout>
     )
 }
