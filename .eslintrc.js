@@ -7,6 +7,13 @@ const RULES = {
             unnamedComponents: 'arrow-function',
         },
     ],
+    'react-hooks/exhaustive-deps': [
+        'warn',
+        {
+            additionalHooks:
+                '(useRecoilCallback|useRecoilTransaction_UNSTABLE)',
+        },
+    ],
     'jsx-a11y/anchor-is-valid': 'off',
 }
 
