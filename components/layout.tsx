@@ -4,7 +4,7 @@ import Head from 'next/head'
 import styles from '../styles/layout.module.css'
 // import utilStyles from '../styles/utils.module.css'
 
-export const SITE_TITLE = 'Sandbox Next.js'
+export const SITE_TITLE = 'Food Manager 🍫'
 
 interface Props {
     children: React.ReactNode
