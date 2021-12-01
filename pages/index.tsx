@@ -1,6 +1,6 @@
-import { Center, Text } from '@chakra-ui/layout'
+import { Text } from '@chakra-ui/layout'
+import { useRecoilState } from 'recoil'
 import {
-    Button,
     NumberInput,
     NumberInputField,
     NumberInputStepper,
@@ -11,6 +11,7 @@ import Head from 'next/head'
 // import Link from 'next/link'
 // import { InferGetStaticPropsType } from 'next'
 import Layout, { SITE_TITLE } from '../components/layout'
+import userAge from '../lib/user-data'
 
 export async function getStaticProps() {
     return {
@@ -19,6 +20,13 @@ export async function getStaticProps() {
 }
 
 export default function Home() {
+    const [age, setAge] = useRecoilState(userAge)
+
+    const parse = (val: string): number => Number(val)
+
+    const onChange = (inputAge: string) => {
+        setAge(parse(inputAge))
+    }
     return (
         <Layout>
             <Head>
@@ -29,17 +37,13 @@ export default function Home() {
                 This tool is about automating the management of food, frige,
                 recipe, scheduling of meal, etc..
             </Text>
-            <NumberInput>
+            <NumberInput onChange={onChange} value={age}>
                 <NumberInputField />
                 <NumberInputStepper>
                     <NumberIncrementStepper />
                     <NumberDecrementStepper />
                 </NumberInputStepper>
             </NumberInput>
-            <Center>
-                <Button>Add number : + 1</Button>
-                <Button>Add number : - 1</Button>
-            </Center>
         </Layout>
     )
 }
