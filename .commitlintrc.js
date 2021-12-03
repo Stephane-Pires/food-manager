@@ -4,7 +4,14 @@ module.exports = {
         'scope-enum': [
             2,
             'always',
-            ['project', 'dev-tooling', 'library', 'landing page', 'graphql'],
+            [
+                'project',
+                'dev-tooling',
+                'library',
+                'landing page',
+                'graphql',
+                'database',
+            ],
         ],
     },
 }
