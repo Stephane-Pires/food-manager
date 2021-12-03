@@ -1,7 +1,7 @@
 import Head from 'next/head'
 // import Image from 'next/image'
 // import Link from 'next/link'
-import styles from '../styles/layout.module.css'
+// import styles from '../styles/layout.module.css'
 // import utilStyles from '../styles/utils.module.css'
 
 export const SITE_TITLE = 'Food Manager 🍫'
@@ -12,7 +12,7 @@ interface Props {
 
 export default function Layout({ children }: Props) {
     return (
-        <div className={styles.container}>
+        <>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
@@ -29,6 +29,6 @@ export default function Layout({ children }: Props) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main>{children}</main>
-        </div>
+        </>
     )
 }

@@ -1,11 +1,10 @@
-import { Text } from '@chakra-ui/layout'
-import { useRecoilState } from 'recoil'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Center, Flex, Text } from '@chakra-ui/layout'
+import Link from 'next/link'
+import Image from 'next/image'
+
+// import { useRecoilState } from 'recoil'
 import {
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
     Table,
     Thead,
     Tbody,
@@ -20,27 +19,34 @@ import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
 import { ApolloQueryResult, gql } from '@apollo/client'
 import Layout, { SITE_TITLE } from '../components/layout'
-import userAge from '../lib/user-data'
-import client from '../apollo-client'
+// import userAge from '../lib/user-data'
+import client from '../lib/apollo-client'
+import apollo from '../public/images/apollo.png'
 
-interface Countries {
-    code: string
+interface Links {
+    id: number
     name: string
-    emoji: string
+    url: string
+    description: string
+    imageUrl: string
+    category: string
 }
 
 interface Data {
-    countries: Countries[]
+    links: Links[]
 }
 
 export async function getStaticProps() {
     const { data }: ApolloQueryResult<Data> = await client.query({
         query: gql`
-            query Countries {
-                countries {
-                    code
+            query {
+                links {
+                    id
                     name
-                    emoji
+                    url
+                    description
+                    imageUrl
+                    category
                 }
             }
         `,
@@ -48,65 +54,84 @@ export async function getStaticProps() {
 
     return {
         props: {
-            countries: data.countries.slice(0, 4),
+            links: data.links,
         },
     }
 }
 
 export default function Home({
-    countries,
+    links,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-    const [age, setAge] = useRecoilState(userAge)
+    // const [age, setAge] = useRecoilState(userAge)
 
-    const parse = (val: string): number => Number(val)
+    // const parse = (val: string): number => Number(val)
 
-    const onChange = (inputAge: string) => {
-        setAge(parse(inputAge))
-    }
+    // const onChange = (inputAge: string) => {
+    //     setAge(parse(inputAge))
+    // }
 
     return (
         <Layout>
             <Head>
                 <title>{SITE_TITLE}</title>
             </Head>
-            <Text fontSize="6xl">Food Manager</Text>
-            <Text fontSize="xl">
-                This tool is about automating the management of food, frige,
-                recipe, scheduling of meal, etc..
-            </Text>
-            <NumberInput onChange={onChange} value={age}>
-                <NumberInputField />
-                <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                </NumberInputStepper>
-            </NumberInput>
+            <Center>
+                <Flex direction="column">
+                    <Text fontSize="6xl">Food Manager</Text>
+                    <Text fontSize="xl">Tech stack of the Food Manage</Text>
+                </Flex>
+            </Center>
 
             <Table variant="simple">
-                <TableCaption>Countries</TableCaption>
+                <TableCaption>Tools used inside this project</TableCaption>
                 <Thead>
                     <Tr>
-                        <Th>Code</Th>
                         <Th>Name</Th>
-                        <Th>Emoji by</Th>
+                        <Th>URL</Th>
+                        <Th>Description</Th>
+                        <Th>Image URL</Th>
+                        <Th>Category</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {countries &&
-                        countries.map(({ code, name, emoji }) => (
-                            <Tr key={code}>
-                                <Td>{code}</Td>
-                                <Td>{name}</Td>
-                                <Td>{emoji}</Td>
-                            </Tr>
-                        ))}
-                    )
+                    {links &&
+                        links.map(
+                            ({
+                                id,
+                                name,
+                                url,
+                                description,
+                                imageUrl,
+                                category,
+                            }) => (
+                                <Tr key={id}>
+                                    <Td>{name}</Td>
+                                    <Td>
+                                        <Link href={url}>
+                                            <a>{url}</a>
+                                        </Link>
+                                    </Td>
+                                    <Td>{description}</Td>
+                                    <Td>
+                                        <Image
+                                            src={`/../public/images/${imageUrl}.png`}
+                                            width="100"
+                                            height="100"
+                                            alt="tech icône"
+                                        />
+                                    </Td>
+                                    <Td>{category}</Td>
+                                </Tr>
+                            )
+                        )}
                 </Tbody>
                 <Tfoot>
                     <Tr>
-                        <Th>Code</Th>
                         <Th>Name</Th>
-                        <Th>Emoji by</Th>
+                        <Th>URL</Th>
+                        <Th>Description</Th>
+                        <Th>Image URL</Th>
+                        <Th>Category</Th>
                     </Tr>
                 </Tfoot>
             </Table>
