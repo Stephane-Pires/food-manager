@@ -11,6 +11,7 @@ module.exports = {
                 'landing page',
                 'graphql',
                 'database',
+                'assets',
             ],
         ],
     },
