@@ -6,6 +6,7 @@ import { createContext } from '../../graphql/context'
 
 const cors = Cors()
 
+// Apollo server setup
 const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
@@ -14,6 +15,7 @@ const apolloServer = new ApolloServer({
 
 const startServer = apolloServer.start()
 
+// Cors, to permit redirection to apollo web client
 export default cors(async (req, res) => {
     if (req.method === 'OPTIONS') {
         res.end()

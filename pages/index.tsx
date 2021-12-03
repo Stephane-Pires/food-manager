@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Center, Flex, Text } from '@chakra-ui/layout'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -15,13 +14,11 @@ import {
     TableCaption,
 } from '@chakra-ui/react'
 import Head from 'next/head'
-// import Link from 'next/link'
 import { InferGetStaticPropsType } from 'next'
 import { ApolloQueryResult, gql } from '@apollo/client'
 import Layout, { SITE_TITLE } from '../components/layout'
 // import userAge from '../lib/user-data'
 import client from '../lib/apollo-client'
-import apollo from '../public/images/apollo.png'
 
 interface Links {
     id: number

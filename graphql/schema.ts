@@ -1,6 +1,7 @@
 // graphql/schema.ts
 import { gql } from 'apollo-server-micro'
 
+// The graphQL schema passed to Apollo Server to define the types
 const typeDefs = gql`
     type Link {
         id: Int
