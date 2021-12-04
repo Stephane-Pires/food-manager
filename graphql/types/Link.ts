@@ -1,11 +1,10 @@
 // /graphql/types/Link.ts
-//  @ts-ignores
-import { objectType, extendType } from 'nexus'
+import { objectType, extendType /* queryField */ } from 'nexus'
 
 export const Link = objectType({
     name: 'Link',
     definition(t) {
-        t.string('id')
+        t.int('id')
         t.string('name')
         t.string('url')
         t.string('description')
@@ -14,12 +13,13 @@ export const Link = objectType({
     },
 })
 
+// Could also be a queryField
+// https://nexusjs.org/docs/api/query-field
 export const LinksQuery = extendType({
     type: 'Query',
     definition(t) {
         t.nonNull.list.field('links', {
             type: 'Link',
-            // @ts-expect-error  TO DELETE LATER
             resolve(_parent, _args, ctx) {
                 return ctx.prisma.link.findMany()
             },

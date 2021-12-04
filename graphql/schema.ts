@@ -46,7 +46,7 @@ const schema = makeSchema({
         module: join(process.cwd(), 'graphql', 'context.ts'),
     },
 }) as unknown as GraphQLSchema
-// FAT WORKAROUND TO DELETE AS SOON AS  POSSIBLE
+// FAT WORKAROUND TO DELETE AS SOON AS POSSIBLE
 // https://github.com/graphql-nexus/nexus/issues/1019
 
 export default schema
