@@ -1,20 +1,52 @@
 // graphql/schema.ts
-import { gql } from 'apollo-server-micro'
+// import { gql } from 'apollo-server-micro'
 
 // The graphQL schema passed to Apollo Server to define the types
-const typeDefs = gql`
-    type Link {
-        id: Int
-        name: String
-        description: String
-        url: String
-        category: String
-        imageUrl: String
-    }
+// const typeDefs = gql`
+//     type Link {
+//         id: Int
+//         name: String
+//         description: String
+//         url: String
+//         category: String
+//         imageUrl: String
+//     }
 
-    type Query {
-        links: [Link]!
-    }
-`
+//     type Query {
+//         links: [Link]!
+//     }
+// `
 
-export default typeDefs
+// export default typeDefs
+
+// /graphql/schema.ts
+import { makeSchema } from 'nexus'
+import { GraphQLSchema } from 'graphql'
+import { join } from 'path'
+import * as types from './types'
+
+const schema = makeSchema({
+    // types of my schema
+    types,
+    // output the types in this path
+    outputs: {
+        typegen: join(
+            process.cwd(),
+            'node_modules',
+            '@types',
+            'nexus-typegen',
+            'index.d.ts'
+        ),
+        // output the schema for GraphQL in this path
+        schema: join(process.cwd(), 'graphql', 'schema.graphql'),
+    },
+    // output the context for GraphQL in this path
+    contextType: {
+        export: 'Context',
+        module: join(process.cwd(), 'graphql', 'context.ts'),
+    },
+}) as unknown as GraphQLSchema
+// FAT WORKAROUND TO DELETE AS SOON AS  POSSIBLE
+// https://github.com/graphql-nexus/nexus/issues/1019
+
+export default schema

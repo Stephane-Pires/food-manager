@@ -33,21 +33,23 @@ interface Data {
     links: Links[]
 }
 
-export async function getStaticProps() {
-    const { data }: ApolloQueryResult<Data> = await client.query({
-        query: gql`
-            query {
-                links {
-                    id
-                    name
-                    url
-                    description
-                    imageUrl
-                    category
-                }
+const AllLinksQuery = {
+    query: gql`
+        query {
+            links {
+                id
+                name
+                url
+                description
+                imageUrl
+                category
             }
-        `,
-    })
+        }
+    `,
+}
+
+export async function getStaticProps() {
+    const { data }: ApolloQueryResult<Data> = await client.query(AllLinksQuery)
 
     return {
         props: {
