@@ -75,7 +75,7 @@ export default function Home({
             <Center>
                 <Flex direction="column">
                     <Text fontSize="6xl">Food Manager</Text>
-                    <Text fontSize="xl">Tech stack of the Food Manage</Text>
+                    <Text fontSize="xl">Tech stack of the Food Manager</Text>
                 </Flex>
             </Center>
 
