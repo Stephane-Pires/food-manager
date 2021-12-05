@@ -35,6 +35,7 @@ const AllLinksQuery = {
                 description
                 imageUrl
                 category
+                isItCool
             }
         }
     `,
@@ -82,6 +83,7 @@ export default function Home({
                         <Th>Description</Th>
                         <Th>Image URL</Th>
                         <Th>Category</Th>
+                        <Th>Is it cool ?</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
@@ -94,6 +96,7 @@ export default function Home({
                                 description,
                                 imageUrl,
                                 category,
+                                isItCool,
                             }) => (
                                 <Tr key={id}>
                                     <Td>{name}</Td>
@@ -112,6 +115,7 @@ export default function Home({
                                         />
                                     </Td>
                                     <Td>{category}</Td>
+                                    <Td>{isItCool ? 'True' : 'False'}</Td>
                                 </Tr>
                             )
                         )}
@@ -123,6 +127,7 @@ export default function Home({
                         <Th>Description</Th>
                         <Th>Image URL</Th>
                         <Th>Category</Th>
+                        <Th>Is it cool ?</Th>
                     </Tr>
                 </Tfoot>
             </Table>

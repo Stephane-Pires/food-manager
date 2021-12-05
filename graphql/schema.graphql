@@ -7,6 +7,7 @@ type Link {
   description: String
   id: Int
   imageUrl: String
+  isItCool: Boolean
   name: String
   url: String
 }

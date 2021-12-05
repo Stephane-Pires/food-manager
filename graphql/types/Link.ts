@@ -10,6 +10,7 @@ export const Link = objectType({
         t.string('description')
         t.string('imageUrl')
         t.string('category')
+        t.boolean('isItCool')
     },
 })
 
