@@ -14,11 +14,11 @@ datasource db {
 
 // A table inside the database
 model Link {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
+  id          Int     @id @default(autoincrement())
   name        String
   description String
   url         String
   imageUrl    String
   category    String
+  isItCool    Boolean @default(true)
 }
