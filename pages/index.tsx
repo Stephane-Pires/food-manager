@@ -1,5 +1,5 @@
 import { Center, Flex, Text } from '@chakra-ui/layout'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import Image from 'next/image'
 
 // import { useRecoilState } from 'recoil'
@@ -16,21 +16,13 @@ import {
 import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
 import { ApolloQueryResult, gql } from '@apollo/client'
+import { Link } from '.prisma/client'
 import Layout, { SITE_TITLE } from '../components/layout'
 // import userAge from '../lib/user-data'
 import client from '../lib/apollo-client'
 
-interface Links {
-    id: number
-    name: string
-    url: string
-    description: string
-    imageUrl: string
-    category: string
-}
-
 interface Data {
-    links: Links[]
+    links: Link[]
 }
 
 const AllLinksQuery = {
@@ -106,9 +98,9 @@ export default function Home({
                                 <Tr key={id}>
                                     <Td>{name}</Td>
                                     <Td>
-                                        <Link href={url}>
+                                        <NextLink href={url}>
                                             <a>{url}</a>
-                                        </Link>
+                                        </NextLink>
                                     </Td>
                                     <Td>{description}</Td>
                                     <Td>
