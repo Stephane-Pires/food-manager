@@ -32,7 +32,9 @@ function Colmuns() {
 
 function Rows({ links }: Props) {
     return (
-        <Tbody>
+        // React don't know how much row there might be
+        // eslint-disable-next-line react/jsx-no-useless-fragment
+        <>
             {links &&
                 links.map(
                     ({
@@ -65,7 +67,7 @@ function Rows({ links }: Props) {
                         </Tr>
                     )
                 )}
-        </Tbody>
+        </>
     )
 }
 
@@ -76,7 +78,9 @@ export default function TechTable({ links }: Props) {
             <Thead>
                 <Colmuns />
             </Thead>
-            <Rows links={links} />
+            <Tbody>
+                <Rows links={links} />
+            </Tbody>
             <Tfoot>
                 <Colmuns />
             </Tfoot>
