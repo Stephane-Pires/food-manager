@@ -15,34 +15,19 @@ import {
 } from '@chakra-ui/react'
 import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
-import { ApolloQueryResult, gql } from '@apollo/client'
+import { ApolloQueryResult } from '@apollo/client'
 import { Link } from '.prisma/client'
 import Layout, { SITE_TITLE } from '../components/layout'
 // import userAge from '../lib/user-data'
 import client from '../lib/apollo-client'
+import AllLinks from '../graphql/queries/link'
 
 interface Data {
     links: Link[]
 }
 
-const AllLinksQuery = {
-    query: gql`
-        query {
-            links {
-                id
-                name
-                url
-                description
-                imageUrl
-                category
-                isItCool
-            }
-        }
-    `,
-}
-
 export async function getStaticProps() {
-    const { data }: ApolloQueryResult<Data> = await client.query(AllLinksQuery)
+    const { data }: ApolloQueryResult<Data> = await client.query(AllLinks)
 
     return {
         props: {
