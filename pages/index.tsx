@@ -2,7 +2,6 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
-// import { useRecoilState } from 'recoil'
 import {
     Table,
     Thead,
@@ -18,7 +17,6 @@ import { InferGetStaticPropsType } from 'next'
 import { ApolloQueryResult } from '@apollo/client'
 import { Link } from '.prisma/client'
 import Layout, { SITE_TITLE } from '../components/layout'
-// import userAge from '../lib/user-data'
 import client from '../lib/apollo-client'
 import AllLinks from '../graphql/queries/link'
 
@@ -39,14 +37,6 @@ export async function getStaticProps() {
 export default function Home({
     links,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-    // const [age, setAge] = useRecoilState(userAge)
-
-    // const parse = (val: string): number => Number(val)
-
-    // const onChange = (inputAge: string) => {
-    //     setAge(parse(inputAge))
-    // }
-
     return (
         <Layout>
             <Head>
