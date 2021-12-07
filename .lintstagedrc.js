@@ -1,15 +1,15 @@
 module.exports = {
-    "**/*.{js,jsx}": [
+    '**/*.{js,jsx}': [
         (filenames) =>
             `next lint --file ${filenames
                 .map((file) => file.split(process.cwd())[1])
-                .join(" --file ")}`,
-        "prettier --check",
+                .join(' --file ')}`,
+        'prettier --check',
     ],
-    "**/*.{ts,tsx}": [
-        () => "tsc --skipLibCheck --noEmit",
-        "eslint --cache",
-        "prettier --check",
+    '**/*.{ts,tsx}': [
+        () => 'tsc --skipLibCheck --noEmit',
+        'eslint --cache',
+        'prettier --check',
     ],
-    "**/*.{css,md}": ["prettier --check"],
+    '**/*.{css,md}': ['prettier --check'],
 }
