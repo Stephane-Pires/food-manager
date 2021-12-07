@@ -44,7 +44,7 @@ export default function Home({
             <TechTable links={links} />
 
             <Center>
-                <NextLink href="/food-book">
+                <NextLink href="/food-book" passHref>
                     <Button variant="outline" size="lg">
                         Food Book
                     </Button>
