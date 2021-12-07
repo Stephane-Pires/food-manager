@@ -12,6 +12,7 @@ module.exports = {
                 'graphql',
                 'database',
                 'assets',
+                'food book',
             ],
         ],
     },
