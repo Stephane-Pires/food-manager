@@ -1,16 +1,17 @@
-import NextLink from 'next/link'
 import Image from 'next/image'
+import NextLink from 'next/link'
 
 import {
     Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
     TableCaption,
+    Tbody,
+    Td,
+    Tfoot,
+    Th,
+    Thead,
+    Tr,
 } from '@chakra-ui/react'
+
 import { Link } from '.prisma/client'
 
 interface Props {

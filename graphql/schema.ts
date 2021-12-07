@@ -1,7 +1,8 @@
 // /graphql/schema.ts
-import { makeSchema } from 'nexus'
 import { GraphQLSchema } from 'graphql'
+import { makeSchema } from 'nexus'
 import { join } from 'path'
+
 import * as types from './types'
 
 const schema = makeSchema({

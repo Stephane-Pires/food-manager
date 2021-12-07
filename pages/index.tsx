@@ -1,14 +1,16 @@
-import { Center, Flex, Text } from '@chakra-ui/layout'
-import Head from 'next/head'
-import { InferGetStaticPropsType } from 'next'
 import { ApolloQueryResult } from '@apollo/client'
-import { Button } from '@chakra-ui/button'
+import { InferGetStaticPropsType } from 'next'
+import Head from 'next/head'
 import NextLink from 'next/link'
-import { Link } from '.prisma/client'
+
+import { Button } from '@chakra-ui/button'
+import { Center, Flex, Text } from '@chakra-ui/layout'
+
 import Layout, { SITE_TITLE } from '../components/layout'
-import client from '../lib/apollo-client'
-import AllLinks from '../graphql/queries/link'
 import TechTable from '../components/tech-table'
+import AllLinks from '../graphql/queries/link'
+import client from '../lib/apollo-client'
+import { Link } from '.prisma/client'
 
 interface Data {
     links: Link[]

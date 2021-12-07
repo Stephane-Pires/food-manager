@@ -1,5 +1,9 @@
 // /graphql/types/Link.ts
-import { objectType, extendType /* queryField */ } from 'nexus'
+import {
+    extendType,
+    /* queryField */
+    objectType,
+} from 'nexus'
 
 export const Link = objectType({
     name: 'Link',
