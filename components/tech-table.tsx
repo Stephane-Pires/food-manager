@@ -63,7 +63,7 @@ function Rows({ links }: Props) {
                                 />
                             </Td>
                             <Td>{category}</Td>
-                            <Td>{isItCool ? 'True' : 'False'}</Td>
+                            <Td>{isItCool ? 'Yeap' : 'Nop'}</Td>
                         </Tr>
                     )
                 )}
