@@ -2,6 +2,8 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
 import { ApolloQueryResult } from '@apollo/client'
+import { Button } from '@chakra-ui/button'
+import NextLink from 'next/link'
 import { Link } from '.prisma/client'
 import Layout, { SITE_TITLE } from '../components/layout'
 import client from '../lib/apollo-client'
@@ -38,6 +40,14 @@ export default function Home({
             </Center>
 
             <TechTable links={links} />
+
+            <Center>
+                <NextLink href="/food-book">
+                    <Button variant="outline" size="lg">
+                        Food Book
+                    </Button>
+                </NextLink>
+            </Center>
         </Layout>
     )
 }
