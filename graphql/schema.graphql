@@ -18,10 +18,8 @@ type Query {
 
 type Recipe {
   category: String
-  createdAt: String
   description: String
   id: String
   name: String
-  updatedAt: String
   url: String
 }

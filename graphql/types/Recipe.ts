@@ -9,8 +9,6 @@ export const Recipe = objectType({
         t.string('description')
         t.string('url')
         t.string('category')
-        t.string('createdAt')
-        t.string('updatedAt')
     },
 })
 
@@ -21,7 +19,6 @@ export const RecipesQuery = extendType({
     definition(t) {
         t.nonNull.list.field('recipes', {
             type: 'Recipe',
-            // @ts-expect-error  TO DELETE LATER
             resolve(_parent, _args, ctx) {
                 return ctx.prisma.recipe.findMany()
             },
