@@ -19,10 +19,11 @@ export const Recipe = objectType({
 export const RecipesQuery = extendType({
     type: 'Query',
     definition(t) {
-        t.nonNull.list.field('Recipes', {
+        t.nonNull.list.field('recipes', {
             type: 'Recipe',
+            // @ts-expect-error  TO DELETE LATER
             resolve(_parent, _args, ctx) {
-                return ctx.prisma.link.findMany()
+                return ctx.prisma.recipe.findMany()
             },
         })
     },
