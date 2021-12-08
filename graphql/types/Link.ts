@@ -8,11 +8,10 @@ import {
 export const Link = objectType({
     name: 'Link',
     definition(t) {
-        t.int('id')
+        t.string('id')
         t.string('name')
         t.string('url')
         t.string('description')
-        t.string('imageUrl')
         t.string('category')
         t.boolean('isItCool')
     },
