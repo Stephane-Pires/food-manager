@@ -30,6 +30,7 @@
         "@commitlint/config-conventional": "^15.0.0",
         "@next/eslint-plugin-next": "^12.0.4",
         "@trivago/prettier-plugin-sort-imports": "^3.1.1",
+        "@types/node": "^16.11.12",
         "@types/react": "^17.0.37",
         "@typescript-eslint/eslint-plugin": "^5.4.0",
         "@typescript-eslint/parser": "^5.4.0",
@@ -47,9 +48,13 @@
         "prettier": "2.5.1",
         "prettier-plugin-prisma": "^3.6.0",
         "prisma": "^3.6.0",
+        "ts-node": "^10.4.0",
         "typescript": "^4.5.2"
     },
     "volta": {
         "node": "16.13.0"
+    },
+    "prisma": {
+        "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
     }
 }
