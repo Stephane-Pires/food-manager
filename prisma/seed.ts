@@ -3,6 +3,8 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
+    // SEEDS FOR THE LINK
+
     const react = await prisma.link.upsert({
         where: { id: 'react' },
         update: {},
@@ -118,6 +120,24 @@ async function main() {
         apollo,
         graphql,
         sqlite,
+    })
+
+    // SEEDS FOR THE RECIPE
+
+    const tacos = await prisma.recipe.upsert({
+        where: { id: 'tacos' },
+        update: {},
+        create: {
+            id: 'tacos',
+            name: 'Tacos',
+            url: 'https://www.marmiton.org/recettes/recette_tacos-mexicains_34389.aspx',
+            description: 'A nice tacos recipe',
+            category: 'MEAT',
+        },
+    })
+
+    console.log({
+        tacos,
     })
 }
 
