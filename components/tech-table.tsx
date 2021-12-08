@@ -24,7 +24,6 @@ function Colmuns() {
             <Th>Name</Th>
             <Th>URL</Th>
             <Th>Description</Th>
-            <Th>Image URL</Th>
             <Th>Category</Th>
             <Th>Is it cool ?</Th>
         </Tr>
@@ -38,15 +37,7 @@ function Rows({ links }: Props) {
         <>
             {links &&
                 links.map(
-                    ({
-                        id,
-                        name,
-                        url,
-                        description,
-                        imageUrl,
-                        category,
-                        isItCool,
-                    }) => (
+                    ({ id, name, url, description, category, isItCool }) => (
                         <Tr key={id}>
                             <Td>{name}</Td>
                             <Td>
@@ -57,7 +48,7 @@ function Rows({ links }: Props) {
                             <Td>{description}</Td>
                             <Td>
                                 <Image
-                                    src={`/../public/images/${imageUrl}.png`}
+                                    src={`/../public/images/${id}.png`}
                                     width="100"
                                     height="100"
                                     alt="tech icône"

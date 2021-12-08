@@ -8,7 +8,6 @@ const AllLinks = {
                 name
                 url
                 description
-                imageUrl
                 category
                 isItCool
             }
