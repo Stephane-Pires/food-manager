@@ -1,3 +1,5 @@
+import { ApolloQueryResult } from '@apollo/client'
+import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -5,8 +7,27 @@ import { Button } from '@chakra-ui/button'
 import { Box, Center, Flex, SimpleGrid, Text } from '@chakra-ui/layout'
 
 import Layout from '../components/layout'
+import AllRecipes from '../graphql/queries/recipe'
+import client from '../lib/apollo-client'
+import { Recipe } from '.prisma/client'
 
-export default function FoodBook() {
+interface Data {
+    recipes: Recipe[]
+}
+
+export async function getStaticProps() {
+    const { data }: ApolloQueryResult<Data> = await client.query(AllRecipes)
+
+    return {
+        props: {
+            recipes: data.recipes,
+        },
+    }
+}
+
+export default function FoodBook({
+    recipes,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
             <Head>
@@ -20,7 +41,13 @@ export default function FoodBook() {
             </Center>
 
             <SimpleGrid columns={6} spacing={10}>
-                <Box bg="tomato" height="200px" width="200px" />
+                <Box bg="tomato" height="200px" width="200px">
+                    {recipes[0].name}
+                    {recipes[0].category}
+                    {recipes[0].url}
+                    {recipes[0].description}
+                    {recipes[0].createdAt}
+                </Box>
                 <Box bg="tomato" height="200px" width="200px" />
                 <Box bg="tomato" height="200px" width="200px" />
                 <Box bg="tomato" height="200px" width="200px" />
