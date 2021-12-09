@@ -4,7 +4,16 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 import { Button } from '@chakra-ui/button'
-import { Box, Center, Flex, SimpleGrid, Text } from '@chakra-ui/layout'
+import {
+    Badge,
+    Box,
+    Center,
+    Flex,
+    Heading,
+    SimpleGrid,
+    Text,
+    VStack,
+} from '@chakra-ui/layout'
 
 import Layout from '../components/layout'
 import AllRecipes from '../graphql/queries/recipe'
@@ -25,6 +34,67 @@ export async function getStaticProps() {
     }
 }
 
+function RecipeBadge({ category }) {
+    const getBadge = () => {
+        switch (category) {
+            case 'MEAT':
+                return <Badge colorScheme="red">Meat</Badge>
+
+            case 'VEGGY':
+                return <Badge colorScheme="green">Veggy</Badge>
+
+            case 'FISH':
+                return <Badge colorScheme="blue">Fish</Badge>
+
+            case 'DESSERT':
+                return <Badge colorScheme="purple">Dessert</Badge>
+
+            default:
+                return <Badge colorScheme="black">Recipe</Badge>
+        }
+    }
+
+    return getBadge()
+}
+
+// interface RecipeCardProps {
+//     recipe: Recipe
+// }
+function RecipeCard({
+    recipe: { name, category, url, description },
+}: {
+    recipe: Recipe
+}) {
+    return (
+        <Box bg="tomato" height="200px" width="200px">
+            <VStack>
+                <Heading size="md">{name}</Heading>
+
+                <Text size="md">{description}</Text>
+
+                <RecipeBadge category={category} />
+
+                <Link href={url} passHref>
+                    <Button variant="outline" size="md">
+                        Go to Recipe {name}
+                    </Button>
+                </Link>
+            </VStack>
+        </Box>
+    )
+}
+
+function RecipeList({ recipes }: Data) {
+    return (
+        <SimpleGrid columns={6} spacing={10}>
+            {recipes &&
+                recipes.map((recipe) => (
+                    <RecipeCard key={recipe.id} recipe={recipe} />
+                ))}
+        </SimpleGrid>
+    )
+}
+
 export default function FoodBook({
     recipes,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -39,26 +109,7 @@ export default function FoodBook({
                     <Text fontSize="xl">Index of recipes</Text>
                 </Flex>
             </Center>
-
-            <SimpleGrid columns={6} spacing={10}>
-                <Box bg="tomato" height="200px" width="200px">
-                    {recipes[0].name}
-                    {recipes[0].category}
-                    {recipes[0].url}
-                    {recipes[0].description}
-                    {recipes[0].createdAt}
-                </Box>
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-                <Box bg="tomato" height="200px" width="200px" />
-            </SimpleGrid>
-
+            <RecipeList recipes={recipes} />
             <Center>
                 <Flex direction="column">
                     <Link href="/" passHref>
