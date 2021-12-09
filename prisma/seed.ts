@@ -136,8 +136,22 @@ async function main() {
         },
     })
 
+    const chocolateCake = await prisma.recipe.upsert({
+        where: { id: 'chocolate_cake' },
+        update: {},
+        create: {
+            id: 'chocolate_cake',
+            name: 'Chocolate cakes',
+            url: 'https://www.marmiton.org/recettes/recette_tacos-mexicains_34389.aspx',
+            description:
+                'A really nice and gucci chocolate cake. Delicious with a vanilla ice cream',
+            category: 'DESSERT',
+        },
+    })
+
     console.log({
         tacos,
+        chocolateCake,
     })
 }
 
