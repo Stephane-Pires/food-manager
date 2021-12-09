@@ -13,6 +13,7 @@ module.exports = {
                 'database',
                 'assets',
                 'food book',
+                'recipe',
             ],
         ],
     },
