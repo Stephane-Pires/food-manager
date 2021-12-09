@@ -36,7 +36,7 @@ export function RecipeBadge({ category }) {
 }
 
 export function RecipeCard({
-    recipe: { name, category, url, description },
+    recipe: { id, name, category, description },
 }: {
     recipe: Recipe
 }) {
@@ -49,7 +49,7 @@ export function RecipeCard({
 
                 <RecipeBadge category={category} />
 
-                <Link href={url} passHref>
+                <Link href={`/recipe/${id}`} passHref>
                     <Button variant="outline" size="md">
                         Go to Recipe {name}
                     </Button>
