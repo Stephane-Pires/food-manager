@@ -9,8 +9,6 @@ const AllRecipes = {
                 description
                 url
                 category
-                createdAt
-                updatedAt
             }
         }
     `,
