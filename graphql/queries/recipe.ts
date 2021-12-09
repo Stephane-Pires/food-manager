@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-const AllRecipes = {
+export const AllRecipes = {
     query: gql`
         query {
             recipes {
@@ -14,4 +14,12 @@ const AllRecipes = {
     `,
 }
 
-export default AllRecipes
+export const AllRecipesId = {
+    query: gql`
+        query {
+            recipes {
+                id
+            }
+        }
+    `,
+}

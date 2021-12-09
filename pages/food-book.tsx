@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/layout'
 
 import Layout from '../components/layout'
-import AllRecipes from '../graphql/queries/recipe'
+import { AllRecipes } from '../graphql/queries/recipe'
 import client from '../lib/apollo-client'
 import { Recipe } from '.prisma/client'
 
