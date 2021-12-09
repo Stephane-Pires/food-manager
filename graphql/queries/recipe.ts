@@ -23,3 +23,18 @@ export const AllRecipesId = {
         }
     `,
 }
+
+export const RecipeById = (params) => ({
+    query: gql`
+        query Query($recipeId: String!) {
+            recipe(id: $recipeId) {
+                id
+                name
+                description
+                url
+                category
+            }
+        }
+    `,
+    variables: { recipeId: params.id },
+})

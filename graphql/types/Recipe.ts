@@ -1,5 +1,5 @@
 // /graphql/types/Link.ts
-import { extendType, objectType } from 'nexus'
+import { extendType, nonNull, objectType, stringArg } from 'nexus'
 
 export const Recipe = objectType({
     name: 'Recipe',
@@ -21,6 +21,25 @@ export const RecipesQuery = extendType({
             type: 'Recipe',
             resolve(_parent, _args, ctx) {
                 return ctx.prisma.recipe.findMany()
+            },
+        })
+    },
+})
+
+// get Unique Recipe
+export const LinkByIDQuery = extendType({
+    type: 'Query',
+    definition(t) {
+        t.nonNull.field('recipe', {
+            type: 'Recipe',
+            args: { id: nonNull(stringArg()) },
+            resolve(_parent, args, ctx) {
+                const recipe = ctx.prisma.recipe.findUnique({
+                    where: {
+                        id: args.id,
+                    },
+                })
+                return recipe
             },
         })
     },
