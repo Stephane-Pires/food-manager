@@ -24,6 +24,7 @@ function Colmuns() {
             <Th>Name</Th>
             <Th>URL</Th>
             <Th>Description</Th>
+            <Th>Icone</Th>
             <Th>Category</Th>
             <Th>Is it cool ?</Th>
         </Tr>
