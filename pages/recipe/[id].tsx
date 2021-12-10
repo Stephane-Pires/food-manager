@@ -1,12 +1,20 @@
 import { ApolloQueryResult } from '@apollo/client'
 import { GetStaticPaths, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Recipe } from '@prisma/client'
 
 import { Button } from '@chakra-ui/button'
-import { Grid, GridItem, Heading, Text } from '@chakra-ui/layout'
+import {
+    Center,
+    Grid,
+    GridItem,
+    Heading,
+    Text,
+    VStack,
+} from '@chakra-ui/layout'
 
 import Layout from '../../components/layout'
 import { RecipeBadge } from '../../components/recipe'
@@ -18,7 +26,6 @@ export default function RecipeView({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
-            {/* <VStack> */}
             <Head>
                 <title>{name}</title>
             </Head>
@@ -31,28 +38,39 @@ export default function RecipeView({
                 columnGap={0}
                 rowGap={0}
             >
-                <GridItem rowSpan={3} colSpan={2} bg="blue">
-                    <Heading size="lg">{name}</Heading>
-
-                    <RecipeBadge category={category} />
+                <GridItem rowSpan={3} colSpan={2} position="relative">
+                    <Image
+                        src={`/../public/images/recipe/${id}.jpg`}
+                        alt="recipe"
+                        layout="fill"
+                    />
                 </GridItem>
-                <GridItem rowSpan={1} colSpan={1} bg="black">
-                    <Text>{description}</Text>
+                <GridItem rowSpan={1} colSpan={1}>
+                    <VStack>
+                        <Heading size="lg">{name}</Heading>
+                        <RecipeBadge category={category} />
+                    </VStack>
                 </GridItem>
-                <GridItem rowSpan={1} colSpan={1} bg="green">
-                    <Text>{url}</Text>
+                <GridItem rowSpan={1} colSpan={1}>
+                    <VStack margin="1vw">
+                        <Text>{description}</Text>
+                        <Link href={url} passHref>
+                            <Button variant="outline" size="lg">
+                                Go to source recipe
+                            </Button>
+                        </Link>
+                    </VStack>
                 </GridItem>
-                <GridItem rowSpan={1} colSpan={1} bg="red">
-                    <Link href="/food-book" passHref>
-                        <Button variant="outline" size="lg">
-                            Food Book
-                        </Button>
-                    </Link>
-
-                    <div> This is the id inside recipe : id = {id}</div>
+                <GridItem rowSpan={1} colSpan={1}>
+                    <Center>
+                        <Link href="/food-book" passHref>
+                            <Button variant="outline" size="lg">
+                                Food Book
+                            </Button>
+                        </Link>
+                    </Center>
                 </GridItem>
             </Grid>
-            {/* </VStack> */}
         </Layout>
     )
 }
