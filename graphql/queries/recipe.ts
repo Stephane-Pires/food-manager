@@ -9,6 +9,8 @@ export const AllRecipes = {
                 description
                 url
                 category
+                createdAt
+                updatedAt
             }
         }
     `,
@@ -33,6 +35,8 @@ export const RecipeById = (params) => ({
                 description
                 url
                 category
+                createdAt
+                updatedAt
             }
         }
     `,

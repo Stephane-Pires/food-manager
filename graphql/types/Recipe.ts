@@ -9,6 +9,8 @@ export const Recipe = objectType({
         t.string('description')
         t.string('url')
         t.string('category')
+        t.nonNull.dateTime('createdAt')
+        t.nonNull.dateTime('updatedAt')
     },
 })
 

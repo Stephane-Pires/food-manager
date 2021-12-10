@@ -22,7 +22,7 @@ import { AllRecipesId, RecipeById } from '../../graphql/queries/recipe'
 import client from '../../lib/apollo-client'
 
 export default function RecipeView({
-    recipe: { id, name, description, url, category },
+    recipe: { id, name, description, url, category, createdAt, updatedAt },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
@@ -54,6 +54,8 @@ export default function RecipeView({
                 <GridItem rowSpan={1} colSpan={1}>
                     <VStack margin="1vw">
                         <Text>{description}</Text>
+                        <Text>Created at : {createdAt}</Text>
+                        <Text>Last updated at : {updatedAt}</Text>
                         <Link href={url} passHref>
                             <Button variant="outline" size="lg">
                                 Go to source recipe
