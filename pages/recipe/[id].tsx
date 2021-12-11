@@ -1,4 +1,5 @@
 import { ApolloQueryResult } from '@apollo/client'
+import { DateTime } from 'Luxon'
 import { GetStaticPaths, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -54,8 +55,18 @@ export default function RecipeView({
                 <GridItem rowSpan={1} colSpan={1}>
                     <VStack margin="1vw">
                         <Text>{description}</Text>
-                        <Text>Created at : {createdAt}</Text>
-                        <Text>Last updated at : {updatedAt}</Text>
+                        <Text>
+                            Created at :{' '}
+                            {DateTime.fromJSDate(
+                                new Date(createdAt)
+                            ).toLocaleString(DateTime.DATE_MED)}
+                        </Text>
+                        <Text>
+                            Last updated at :{' '}
+                            {DateTime.fromJSDate(
+                                new Date(updatedAt)
+                            ).toLocaleString(DateTime.DATE_MED)}
+                        </Text>
                         <Link href={url} passHref>
                             <Button variant="outline" size="lg">
                                 Go to source recipe
