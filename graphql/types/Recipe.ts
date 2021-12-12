@@ -29,7 +29,7 @@ export const RecipesQuery = extendType({
 })
 
 // get Unique Recipe
-export const LinkByIDQuery = extendType({
+export const RecipeByIDQuery = extendType({
     type: 'Query',
     definition(t) {
         t.nonNull.field('recipe', {
