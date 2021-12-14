@@ -158,7 +158,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 
 -   [x] Create README
 -   [ ] Migrate to SQL
--   [ ] ScalarTypes nexus DateTim
+-   [abandonned] ScalarTypes nexus DateTim
 -   [ ] Formik exploration
 -   [ ] Form myself on Apollo
 
