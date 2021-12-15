@@ -23,11 +23,12 @@ type Query {
 }
 
 type Recipe {
-  category: String
   createdAt: DateTime!
   description: String
+  diets: [String]
   id: String
   name: String
+  service: String
   updatedAt: DateTime!
   url: String
 }

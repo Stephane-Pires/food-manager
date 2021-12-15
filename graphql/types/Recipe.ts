@@ -8,7 +8,8 @@ export const Recipe = objectType({
         t.string('name')
         t.string('description')
         t.string('url')
-        t.string('category')
+        t.string('service')
+        t.list.string('diets')
         t.nonNull.dateTime('createdAt')
         t.nonNull.dateTime('updatedAt')
     },
