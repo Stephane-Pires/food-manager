@@ -8,7 +8,7 @@ generator client {
 
 // Connect to the database  (sqlite, mySQL, mongoDB, PostgreSQL)
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

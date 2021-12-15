@@ -1,22 +1,26 @@
 -- CreateTable
 CREATE TABLE "Link" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "category" TEXT CHECK( category IN ('FULLSTACK','BACKEND','FRONTEND') ) NOT NULL,
-    "isItCool" BOOLEAN NOT NULL DEFAULT true
+    "category" TEXT NOT NULL,
+    "isItCool" BOOLEAN NOT NULL DEFAULT true,
+
+    CONSTRAINT "Link_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Recipe" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "category" TEXT CHECK( category IN ('MEAT','VEGGY','FISH','DESSERT') ) NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "category" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Recipe_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
