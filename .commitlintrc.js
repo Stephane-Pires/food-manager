@@ -14,6 +14,7 @@ module.exports = {
                 'assets',
                 'food book',
                 'recipe',
+                'add-recipe',
             ],
         ],
     },
