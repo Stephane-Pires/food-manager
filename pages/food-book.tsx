@@ -43,11 +43,18 @@ export default function FoodBook({
             <RecipeList recipes={recipes} />
             <Center>
                 <Flex direction="column">
-                    <Link href="/" passHref>
-                        <Button variant="outline" size="lg">
-                            Tech Stack
-                        </Button>
-                    </Link>
+                    <Center>
+                        <Link href="/" passHref>
+                            <Button variant="outline" size="lg">
+                                Tech Stack
+                            </Button>
+                        </Link>
+                        <Link href="/add-recipe" passHref>
+                            <Button variant="outline" size="lg">
+                                Add Recipe
+                            </Button>
+                        </Link>
+                    </Center>
                 </Flex>
             </Center>
         </Layout>
