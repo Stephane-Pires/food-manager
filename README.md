@@ -157,7 +157,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 ### Dev checklist
 
 -   [x] Create README
--   [ ] Migrate to SQL
+-   [x] Migrate to PostgresSQL
 -   [abandonned] ScalarTypes nexus DateTim
 -   [ ] Formik exploration
 -   [ ] Form myself on Apollo
