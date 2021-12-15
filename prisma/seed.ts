@@ -134,7 +134,7 @@ async function main() {
             url: 'https://www.marmiton.org/recettes/recette_tacos-mexicains_34389.aspx',
             description: 'A nice tacos recipe',
             service: 'MAIN',
-            diets: ['CARNIVORE'],
+            diets: ['CARNIVORE', 'VEGETARIAN', 'PESCETARIAN'],
         },
     })
 
