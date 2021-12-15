@@ -1,10 +1,13 @@
+-- CreateEnum
+CREATE TYPE "Stack" AS ENUM ('FULLSTACK', 'FRONTEND', 'BACKEND');
+
 -- CreateTable
 CREATE TABLE "Link" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "category" TEXT NOT NULL,
+    "category" "Stack" NOT NULL,
     "isItCool" BOOLEAN NOT NULL DEFAULT true,
 
     CONSTRAINT "Link_pkey" PRIMARY KEY ("id")

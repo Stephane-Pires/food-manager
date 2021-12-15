@@ -18,8 +18,14 @@ model Link {
   name        String
   description String
   url         String
-  category    String
+  category    Stack
   isItCool    Boolean @default(true)
+}
+
+enum Stack {
+  FULLSTACK
+  FRONTEND
+  BACKEND
 }
 
 model Recipe {
