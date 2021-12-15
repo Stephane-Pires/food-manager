@@ -133,7 +133,8 @@ async function main() {
             name: 'Tacos',
             url: 'https://www.marmiton.org/recettes/recette_tacos-mexicains_34389.aspx',
             description: 'A nice tacos recipe',
-            category: 'MEAT',
+            service: 'MAIN',
+            diets: ['CARNIVORE'],
         },
     })
 
@@ -146,7 +147,8 @@ async function main() {
             url: 'https://www.marmiton.org/recettes/recette_tacos-mexicains_34389.aspx',
             description:
                 'A really nice and gucci chocolate cake. Delicious with a vanilla ice cream',
-            category: 'DESSERT',
+            service: 'DESSERT',
+            diets: [],
         },
     })
 

@@ -1,6 +1,12 @@
 -- CreateEnum
 CREATE TYPE "Stack" AS ENUM ('FULLSTACK', 'FRONTEND', 'BACKEND');
 
+-- CreateEnum
+CREATE TYPE "Diet" AS ENUM ('VEGAN', 'VEGETARIAN', 'CARNIVORE', 'PESCETARIAN');
+
+-- CreateEnum
+CREATE TYPE "Service" AS ENUM ('APERITIF', 'STARTER', 'MAIN', 'DESSERT', 'COCKTAIL');
+
 -- CreateTable
 CREATE TABLE "Link" (
     "id" TEXT NOT NULL,
@@ -19,7 +25,8 @@ CREATE TABLE "Recipe" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "category" TEXT NOT NULL,
+    "service" "Service" NOT NULL,
+    "diets" "Diet"[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

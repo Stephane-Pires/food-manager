@@ -22,18 +22,36 @@ model Link {
   isItCool    Boolean @default(true)
 }
 
+model Recipe {
+  id          String   @id @unique
+  name        String
+  description String
+  url         String
+  service     Service
+  diets       Diet[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// BELOW YOU WILL FIND ENUMERATION
+
 enum Stack {
   FULLSTACK
   FRONTEND
   BACKEND
 }
 
-model Recipe {
-  id          String   @id @unique
-  name        String
-  description String
-  url         String
-  category    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+enum Diet {
+  VEGAN
+  VEGETARIAN
+  CARNIVORE
+  PESCETARIAN
+}
+
+enum Service {
+  APERITIF
+  STARTER
+  MAIN
+  DESSERT
+  COCKTAIL
 }
