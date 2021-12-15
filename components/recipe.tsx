@@ -10,25 +10,57 @@ import {
     VStack,
 } from '@chakra-ui/layout'
 
-import { Recipe } from '.prisma/client'
+import { Diet, Recipe, Service } from '.prisma/client'
 
-export function RecipeBadge({ category }) {
+export function RecipeServiceBadge({ service }) {
     const getBadge = () => {
-        switch (category) {
-            case 'MEAT':
-                return <Badge colorScheme="red">Meat</Badge>
+        switch (service) {
+            case Service.COCKTAIL:
+                return <Badge colorScheme="red">Cocktail</Badge>
 
-            case 'VEGGY':
-                return <Badge colorScheme="green">Veggy</Badge>
+            case Service.STARTER:
+                return <Badge colorScheme="green">Starter</Badge>
 
-            case 'FISH':
-                return <Badge colorScheme="blue">Fish</Badge>
+            case Service.MAIN:
+                return <Badge colorScheme="blue">Main</Badge>
 
-            case 'DESSERT':
+            case Service.DESSERT:
                 return <Badge colorScheme="purple">Dessert</Badge>
 
+            case Service.APERITIF:
+                return <Badge colorScheme="purple">Aperitif</Badge>
+
             default:
-                return <Badge colorScheme="black">Recipe</Badge>
+                return (
+                    <Badge colorScheme="black">
+                        No Service badge available
+                    </Badge>
+                )
+        }
+    }
+
+    return getBadge()
+}
+
+export function RecipeDietBadge({ diet }) {
+    const getBadge = () => {
+        switch (diet) {
+            case Diet.CARNIVORE:
+                return <Badge colorScheme="red">Carnivore</Badge>
+
+            case Diet.PESCETARIAN:
+                return <Badge colorScheme="blue">Pescetarian</Badge>
+
+            case Diet.VEGAN:
+                return <Badge colorScheme="green">Vegan</Badge>
+
+            case Diet.VEGETARIAN:
+                return <Badge colorScheme="dark green">Vegetarian</Badge>
+
+            default:
+                return (
+                    <Badge colorScheme="black">No Diet badge available</Badge>
+                )
         }
     }
 
@@ -36,7 +68,7 @@ export function RecipeBadge({ category }) {
 }
 
 export function RecipeCard({
-    recipe: { id, name, category, description },
+    recipe: { id, name, service, diets, description },
 }: {
     recipe: Recipe
 }) {
@@ -47,7 +79,11 @@ export function RecipeCard({
 
                 <Text size="md">{description}</Text>
 
-                <RecipeBadge category={category} />
+                <RecipeServiceBadge service={service} />
+
+                {diets.map((diet) => (
+                    <RecipeDietBadge key={diet} diet={diet} />
+                ))}
 
                 <Link href={`/recipe/${id}`} passHref>
                     <Button variant="outline" size="md">

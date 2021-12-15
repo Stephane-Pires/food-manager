@@ -18,12 +18,12 @@ import {
 } from '@chakra-ui/layout'
 
 import Layout from '../../components/layout'
-import { RecipeBadge } from '../../components/recipe'
+import { RecipeServiceBadge } from '../../components/recipe'
 import { AllRecipesId, RecipeById } from '../../graphql/queries/recipe'
 import client from '../../lib/apollo-client'
 
 export default function RecipeView({
-    recipe: { id, name, description, url, category, createdAt, updatedAt },
+    recipe: { id, name, description, url, service, createdAt, updatedAt },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
@@ -49,7 +49,7 @@ export default function RecipeView({
                 <GridItem rowSpan={1} colSpan={1}>
                     <VStack>
                         <Heading size="lg">{name}</Heading>
-                        <RecipeBadge category={category} />
+                        <RecipeServiceBadge service={service} />
                     </VStack>
                 </GridItem>
                 <GridItem rowSpan={1} colSpan={1}>
