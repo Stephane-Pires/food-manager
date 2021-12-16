@@ -17,6 +17,7 @@
         "@emotion/styled": "^11.6.0",
         "@prisma/client": "^3.6.0",
         "apollo-server-micro": "^3.5.0",
+        "formik": "^2.2.9",
         "framer-motion": "^4.1.17",
         "graphql": "^16.0.1",
         "graphql-scalars": "^1.14.1",
@@ -25,7 +26,8 @@
         "next": "^12.0.7",
         "nexus": "^1.2.0-next.17",
         "react": "17.0.2",
-        "react-dom": "17.0.2"
+        "react-dom": "17.0.2",
+        "yup": "^0.32.11"
     },
     "devDependencies": {
         "@commitlint/cli": "^15.0.0",
