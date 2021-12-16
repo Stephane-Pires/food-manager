@@ -2,8 +2,6 @@ import { Form, Formik, useField } from 'formik'
 import { useMemo } from 'react'
 import * as Yup from 'yup'
 
-import { Diet, Service } from '@prisma/client'
-
 import { Button } from '@chakra-ui/button'
 import { VStack } from '@chakra-ui/layout'
 import {
@@ -16,6 +14,8 @@ import {
     Input,
     Select,
 } from '@chakra-ui/react'
+
+import { EnumKey, getEnumFromEnumKey } from '../utils/enums'
 
 function TextInputField({ label, name, type, placeholder }) {
     // const [field, meta] = useField({ name })
@@ -41,7 +41,7 @@ function TextInputField({ label, name, type, placeholder }) {
     )
 }
 
-function OptionField({ name }) {
+function OptionField({ name, enumKey, label }) {
     // const [field, meta] = useField({ name })
     // console.log('field', field)
     // console.log('meta', meta)
@@ -49,19 +49,25 @@ function OptionField({ name }) {
         name,
     })
 
+    const selectedEnum = getEnumFromEnumKey(enumKey)
+
     const serviceItems = useMemo(
         () =>
-            (Object.keys(Service) as Array<keyof typeof Service>).map(
-                (service) => (
-                    <option key={service} label={service} value={service} />
+            (Object.keys(selectedEnum) as Array<keyof typeof selectedEnum>).map(
+                (selectedEnumKey) => (
+                    <option
+                        key={selectedEnumKey}
+                        label={selectedEnumKey}
+                        value={selectedEnumKey}
+                    />
                 )
             ),
-        []
+        [selectedEnum]
     )
 
     return (
         <FormControl id={name} isInvalid={error && touched} isRequired>
-            <FormLabel htmlFor={name}>Services</FormLabel>
+            <FormLabel htmlFor={name}>{label}</FormLabel>
             <Select
                 placeholder="Select Services"
                 value={value}
@@ -74,7 +80,7 @@ function OptionField({ name }) {
     )
 }
 
-function CheckboxField({ name }) {
+function CheckboxField({ name, enumKey }) {
     // const [field, meta] = useField({ name })
     // console.log('field', field)
     // console.log('meta', meta)
@@ -82,19 +88,23 @@ function CheckboxField({ name }) {
         name,
     })
 
+    const selectedEnum = getEnumFromEnumKey(enumKey)
+
     const checkboxItems = useMemo(
         () =>
-            (Object.keys(Diet) as Array<keyof typeof Diet>).map((diet) => (
-                <Checkbox
-                    onChange={onChange}
-                    name={name}
-                    key={diet}
-                    value={diet}
-                >
-                    {diet}
-                </Checkbox>
-            )),
-        [onChange, name]
+            (Object.keys(selectedEnum) as Array<keyof typeof selectedEnum>).map(
+                (selectedEnumKey) => (
+                    <Checkbox
+                        onChange={onChange}
+                        name={name}
+                        key={selectedEnumKey}
+                        value={selectedEnumKey}
+                    >
+                        {selectedEnumKey}
+                    </Checkbox>
+                )
+            ),
+        [onChange, name, selectedEnum]
     )
 
     return (
@@ -144,9 +154,13 @@ function AddRecipeForm() {
                         placeholder="pasta_al_salmon"
                     />
 
-                    <OptionField name="service" />
+                    <OptionField
+                        name="service"
+                        enumKey={EnumKey.SERVICE}
+                        label="Services"
+                    />
 
-                    <CheckboxField name="diet" />
+                    <CheckboxField name="diet" enumKey={EnumKey.DIET} />
 
                     <Button type="submit">Submit</Button>
                 </VStack>
