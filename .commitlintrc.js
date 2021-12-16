@@ -15,6 +15,7 @@ module.exports = {
                 'food book',
                 'recipe',
                 'add-recipe',
+                'utils',
             ],
         ],
     },
