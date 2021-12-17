@@ -8,7 +8,7 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '../components/layout'
 import { RecipeList } from '../components/recipe'
-import { AllRecipes } from '../graphql/queries/recipe'
+import { ALL_RECIPES } from '../graphql/queries/recipe'
 import client from '../lib/apollo-client'
 import { Recipe } from '.prisma/client'
 
@@ -17,7 +17,7 @@ interface Data {
 }
 
 export async function getStaticProps() {
-    const { data }: ApolloQueryResult<Data> = await client.query(AllRecipes)
+    const { data }: ApolloQueryResult<Data> = await client.query(ALL_RECIPES)
 
     return {
         props: {
