@@ -41,7 +41,7 @@ export default function RecipeView({
             >
                 <GridItem rowSpan={3} colSpan={2} position="relative">
                     <Image
-                        src={`/../public/images/recipe/${id}.jpg`}
+                        src={`/images/recipe/${id}.jpg`}
                         alt="recipe"
                         layout="fill"
                     />

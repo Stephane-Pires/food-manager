@@ -49,7 +49,7 @@ function Rows({ links }: Props) {
                             <Td>{description}</Td>
                             <Td>
                                 <Image
-                                    src={`/../public/images/link/${id}.png`}
+                                    src={`/images/link/${id}.png`}
                                     width="100"
                                     height="100"
                                     alt="tech icône"
