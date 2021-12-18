@@ -22,7 +22,7 @@ export const RecipesQuery = extendType({
     definition(t) {
         t.nonNull.list.field('recipes', {
             type: 'Recipe',
-            resolve(_parent, _args, ctx) {
+            resolve(_, __, ctx) {
                 return ctx.prisma.recipe.findMany()
             },
         })
@@ -36,7 +36,7 @@ export const RecipeByIDQuery = extendType({
         t.nonNull.field('recipe', {
             type: 'Recipe',
             args: { id: nonNull(stringArg()) },
-            resolve(_parent, args, ctx) {
+            resolve(_, args, ctx) {
                 const recipe = ctx.prisma.recipe.findUnique({
                     where: {
                         id: args.id,

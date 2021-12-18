@@ -24,7 +24,7 @@ export const LinksQuery = extendType({
     definition(t) {
         t.nonNull.list.field('links', {
             type: 'Link',
-            resolve(_parent, _args, ctx) {
+            resolve(_, __, ctx) {
                 return ctx.prisma.link.findMany()
             },
         })
