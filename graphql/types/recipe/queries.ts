@@ -21,11 +21,11 @@ export const RecipeQuery = extendType({
     definition(t) {
         t.nonNull.field('recipe', {
             type: 'Recipe',
-            args: { id: nonNull(stringArg()) },
-            resolve(_, { id }, ctx) {
+            args: { recipeId: nonNull(stringArg()) },
+            resolve(_, { recipeId }, ctx) {
                 const recipe = ctx.prisma.recipe.findUnique({
                     where: {
-                        id,
+                        id: recipeId,
                     },
                 })
                 return recipe

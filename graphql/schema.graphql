@@ -18,7 +18,7 @@ type Link {
 
 type Query {
   links: [Link]!
-  recipe(id: String!): Recipe!
+  recipe(recipeId: String!): Recipe!
   recipes: [Recipe]!
 }
 

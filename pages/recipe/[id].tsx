@@ -110,12 +110,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 }
 
-export const getStaticProps = async ({ params: { id } }) => {
+export const getStaticProps = async ({ params: { id: recipeId } }) => {
     const {
         data: { recipe },
     }: ApolloQueryResult<{
         recipe: Recipe
-    }> = await client.query(GET_RECIPE(id))
+    }> = await client.query(GET_RECIPE(recipeId))
 
     return {
         props: {

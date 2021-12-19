@@ -27,10 +27,10 @@ export const RECIPES_ID = {
     `,
 }
 
-export const GET_RECIPE = (id: String) => ({
+export const GET_RECIPE = (recipeId: String) => ({
     query: gql`
         query getRecipe($recipeId: String!) {
-            recipe(id: $recipeId) {
+            recipe(recipeId: $recipeId) {
                 id
                 name
                 description
@@ -42,5 +42,5 @@ export const GET_RECIPE = (id: String) => ({
             }
         }
     `,
-    variables: { recipeId: id },
+    variables: { recipeId },
 })
