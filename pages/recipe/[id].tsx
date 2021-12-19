@@ -19,7 +19,10 @@ import {
 
 import Layout from '../../components/layout'
 import { RecipeServiceBadge } from '../../components/recipe'
-import { ALL_RECIPES_ID, RECIPE_BY_ID } from '../../graphql/queries/recipe'
+import {
+    ALL_RECIPES_ID,
+    RECIPE_BY_ID,
+} from '../../graphql/client-queries/recipe'
 import client from '../../lib/apollo-client'
 
 export default function RecipeView({
@@ -110,12 +113,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params: { id } }) => {
     const {
         data: { recipe },
     }: ApolloQueryResult<{
         recipe: Recipe
-    }> = await client.query(RECIPE_BY_ID(params))
+    }> = await client.query(RECIPE_BY_ID(id))
 
     return {
         props: {

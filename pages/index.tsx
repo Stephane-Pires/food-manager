@@ -8,7 +8,7 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout, { SITE_TITLE } from '../components/layout'
 import TechTable from '../components/tech-table'
-import ALL_LINKS from '../graphql/queries/link'
+import ALL_LINKS from '../graphql/client-queries/link'
 import client from '../lib/apollo-client'
 import { Link } from '.prisma/client'
 

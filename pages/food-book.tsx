@@ -8,7 +8,7 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '../components/layout'
 import { RecipeList } from '../components/recipe'
-import { ALL_RECIPES } from '../graphql/queries/recipe'
+import { ALL_RECIPES } from '../graphql/client-queries/recipe'
 import client from '../lib/apollo-client'
 import { Recipe } from '.prisma/client'
 

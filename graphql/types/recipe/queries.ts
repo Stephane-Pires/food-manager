@@ -1,19 +1,5 @@
 // /graphql/types/Link.ts
-import { extendType, nonNull, objectType, stringArg } from 'nexus'
-
-export const Recipe = objectType({
-    name: 'Recipe',
-    definition(t) {
-        t.string('id')
-        t.string('name')
-        t.string('description')
-        t.string('url')
-        t.string('service')
-        t.list.string('diets')
-        t.nonNull.dateTime('createdAt')
-        t.nonNull.dateTime('updatedAt')
-    },
-})
+import { extendType, nonNull, stringArg } from 'nexus'
 
 // Could also be a queryField
 // https://nexusjs.org/docs/api/query-field
@@ -30,16 +16,16 @@ export const RecipesQuery = extendType({
 })
 
 // get Unique Recipe
-export const RecipeByIDQuery = extendType({
+export const RecipeQuery = extendType({
     type: 'Query',
     definition(t) {
         t.nonNull.field('recipe', {
             type: 'Recipe',
             args: { id: nonNull(stringArg()) },
-            resolve(_, args, ctx) {
+            resolve(_, { id }, ctx) {
                 const recipe = ctx.prisma.recipe.findUnique({
                     where: {
-                        id: args.id,
+                        id,
                     },
                 })
                 return recipe
