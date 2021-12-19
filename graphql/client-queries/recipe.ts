@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
-export const ALL_RECIPES = {
+export const RECIPES = {
     query: gql`
-        query {
+        query getRecipes {
             recipes {
                 id
                 name
@@ -17,9 +17,9 @@ export const ALL_RECIPES = {
     `,
 }
 
-export const ALL_RECIPES_ID = {
+export const RECIPES_ID = {
     query: gql`
-        query {
+        query getRecipesId {
             recipes {
                 id
             }
@@ -27,9 +27,9 @@ export const ALL_RECIPES_ID = {
     `,
 }
 
-export const RECIPE_BY_ID = (id: String) => ({
+export const GET_RECIPE = (id: String) => ({
     query: gql`
-        query Query($recipeId: String!) {
+        query getRecipe($recipeId: String!) {
             recipe(id: $recipeId) {
                 id
                 name

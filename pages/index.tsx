@@ -8,7 +8,7 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout, { SITE_TITLE } from '../components/layout'
 import TechTable from '../components/tech-table'
-import ALL_LINKS from '../graphql/client-queries/link'
+import LINKS from '../graphql/client-queries/link'
 import client from '../lib/apollo-client'
 import { Link } from '.prisma/client'
 
@@ -17,7 +17,7 @@ interface Data {
 }
 
 export async function getStaticProps() {
-    const { data }: ApolloQueryResult<Data> = await client.query(ALL_LINKS)
+    const { data }: ApolloQueryResult<Data> = await client.query(LINKS)
 
     return {
         props: {

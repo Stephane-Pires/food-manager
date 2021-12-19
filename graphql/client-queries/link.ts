@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
-const ALL_LINKS = {
+const LINKS = {
     query: gql`
-        query {
+        query getLinks {
             links {
                 id
                 name
@@ -15,4 +15,4 @@ const ALL_LINKS = {
     `,
 }
 
-export default ALL_LINKS
+export default LINKS
