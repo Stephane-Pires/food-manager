@@ -7,6 +7,7 @@ import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout, { SITE_TITLE } from '../components/layout'
+import QueryResult from '../components/query-result'
 import TechTable from '../components/tech-table'
 import LINKS from '../graphql/client-queries/link'
 import client from '../lib/apollo-client'
@@ -17,39 +18,47 @@ interface Data {
 }
 
 export async function getStaticProps() {
-    const { data }: ApolloQueryResult<Data> = await client.query(LINKS)
+    const linksReponse: ApolloQueryResult<Data> = await client.query(LINKS)
 
     return {
         props: {
-            links: data.links,
+            linksReponse,
         },
     }
 }
 
 export default function Home({
-    links,
+    linksReponse: {
+        data: { links },
+        loading,
+        error,
+    },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
-            <Head>
-                <title>{SITE_TITLE}</title>
-            </Head>
-            <Center>
-                <Flex direction="column">
-                    <Text fontSize="6xl">Food Manager</Text>
-                    <Text fontSize="xl">Tech stack of the Food Manager</Text>
-                </Flex>
-            </Center>
+            <QueryResult loading={loading} error={error} data={links}>
+                <Head>
+                    <title>{SITE_TITLE}</title>
+                </Head>
+                <Center>
+                    <Flex direction="column">
+                        <Text fontSize="6xl">Food Manager</Text>
+                        <Text fontSize="xl">
+                            Tech stack of the Food Manager
+                        </Text>
+                    </Flex>
+                </Center>
 
-            <TechTable links={links} />
+                <TechTable links={links} />
 
-            <Center>
-                <NextLink href="/food-book" passHref>
-                    <Button variant="outline" size="lg">
-                        Food Book
-                    </Button>
-                </NextLink>
-            </Center>
+                <Center>
+                    <NextLink href="/food-book" passHref>
+                        <Button variant="outline" size="lg">
+                            Food Book
+                        </Button>
+                    </NextLink>
+                </Center>
+            </QueryResult>
         </Layout>
     )
 }

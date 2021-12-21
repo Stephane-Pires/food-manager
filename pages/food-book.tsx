@@ -7,6 +7,7 @@ import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '../components/layout'
+import QueryResult from '../components/query-result'
 import { RecipeList } from '../components/recipe'
 import { RECIPES } from '../graphql/client-queries/recipe'
 import client from '../lib/apollo-client'
@@ -17,46 +18,52 @@ interface Data {
 }
 
 export async function getStaticProps() {
-    const { data }: ApolloQueryResult<Data> = await client.query(RECIPES)
+    const recipesResult: ApolloQueryResult<Data> = await client.query(RECIPES)
 
     return {
         props: {
-            recipes: data.recipes,
+            recipesResult,
         },
     }
 }
 
 export default function FoodBook({
-    recipes,
+    recipesResult: {
+        loading,
+        error,
+        data: { recipes },
+    },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
-            <Head>
-                <title>Food Book</title>
-            </Head>
-            <Center>
-                <Flex direction="column">
-                    <Text fontSize="6xl">Food Book</Text>
-                    <Text fontSize="xl">Index of recipes</Text>
-                </Flex>
-            </Center>
-            <RecipeList recipes={recipes} />
-            <Center>
-                <Flex direction="column">
-                    <Center>
-                        <Link href="/" passHref>
-                            <Button variant="outline" size="lg">
-                                Tech Stack
-                            </Button>
-                        </Link>
-                        <Link href="/add-recipe" passHref>
-                            <Button variant="outline" size="lg">
-                                Add Recipe
-                            </Button>
-                        </Link>
-                    </Center>
-                </Flex>
-            </Center>
+            <QueryResult loading={loading} error={error} data={recipes}>
+                <Head>
+                    <title>Food Book</title>
+                </Head>
+                <Center>
+                    <Flex direction="column">
+                        <Text fontSize="6xl">Food Book</Text>
+                        <Text fontSize="xl">Index of recipes</Text>
+                    </Flex>
+                </Center>
+                <RecipeList recipes={recipes} />
+                <Center>
+                    <Flex direction="column">
+                        <Center>
+                            <Link href="/" passHref>
+                                <Button variant="outline" size="lg">
+                                    Tech Stack
+                                </Button>
+                            </Link>
+                            <Link href="/add-recipe" passHref>
+                                <Button variant="outline" size="lg">
+                                    Add Recipe
+                                </Button>
+                            </Link>
+                        </Center>
+                    </Flex>
+                </Center>
+            </QueryResult>
         </Layout>
     )
 }
