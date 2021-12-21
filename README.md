@@ -61,6 +61,9 @@
       <!-- <a href="#about-the-project">About The Project</a> -->
         <a href="#built-with">Built With</a>
     </li>
+    <li>
+        <a href="#notes">Notes</a>
+    </li>
     <!-- <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -97,6 +100,15 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 -   [Prisma](https://www.prisma.io)
 -   [Nexus](https://nexusjs.org)
 -   [Formik](https://formik.org)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Notes
+
+-   Adding <QueryResult> to a page that is statically rendered is probably useless since the loading state will always be false. _The loading will be done at build time_. I project to use SSR so... it's not gonna be a problem long term wise
+
+Commit related :  
+[d96817f4716a0d2cffe95c075513ad56d5df7714]() [d8dff92493a77127edc1cc19087a636d0a6022ab]()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -159,7 +171,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [x] Create README
 -   [x] Migrate to PostgresSQL
 -   [abandonned] ScalarTypes nexus DateTim
--   [ ] Formik exploration
+-   [x] Formik exploration
 -   [ ] Form myself on Apollo
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
