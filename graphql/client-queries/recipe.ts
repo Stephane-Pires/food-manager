@@ -27,7 +27,7 @@ export const RECIPES_ID = {
     `,
 }
 
-export const GET_RECIPE = (recipeId: String) => ({
+export const RECIPE = (recipeId: String) => ({
     query: gql`
         query getRecipe($recipeId: String!) {
             recipe(recipeId: $recipeId) {
