@@ -8,27 +8,64 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTime
 
 type Link {
+  """FULLSTACK, FRONTEND, BACKEND"""
   category: String
+
+  """My opinion about the Techno"""
   description: String
+
+  """The id of a link"""
   id: String
+
+  """Do i found the techno cool to use"""
   isItCool: Boolean
+
+  """Name of the link"""
   name: String
+
+  """The main page of the site related to the link"""
   url: String
 }
 
 type Query {
+  """
+  Query all items "Link"
+  """
   links: [Link]!
+
+  """Query an item "Recipe" with the help of recipeId has argument"""
   recipe(recipeId: String!): Recipe!
+
+  """
+  Query all items "Recipe"
+  """
   recipes: [Recipe]!
 }
 
 type Recipe {
+  """The date at which the recipe was created inside the database"""
   createdAt: DateTime!
+
+  """
+  Description of the recipe, how to do it, is it good, tips & tricks, etc..
+  """
   description: String
+
+  """Represents the diets for which the recipe is compatible"""
   diets: [String]
+
+  """Id of a recipe"""
   id: String
+
+  """Name of the recipe"""
   name: String
+
+  """Represent the service at which the recipe is served"""
   service: String
+
+  """The date at which the recipe was last updated"""
   updatedAt: DateTime!
+
+  """An URL heading to the recipe source"""
   url: String
 }
