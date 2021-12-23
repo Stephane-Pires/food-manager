@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client'
 import { Form, Formik, useField } from 'formik'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import * as Yup from 'yup'
 
 import { Button } from '@chakra-ui/button'
@@ -14,6 +14,7 @@ import {
     HStack,
     Input,
     Select,
+    useToast,
 } from '@chakra-ui/react'
 
 import { CREATE_RECIPE } from '../graphql/client-queries/recipe'
@@ -117,9 +118,42 @@ function CheckboxField({ name, enumKey }) {
 }
 
 function AddRecipeForm() {
-    const [createRecipe, TMP_A_UTILISER] = useMutation(CREATE_RECIPE)
+    const [createRecipe, { data, error }] = useMutation(CREATE_RECIPE)
 
-    console.log('TMP_A_UTILISER', TMP_A_UTILISER)
+    const toast = useToast()
+
+    const formikRef = useRef(null)
+
+    useEffect(() => {
+        if (error) {
+            toast({
+                title: `An unknown error happened while trying to mutate the graphql state`,
+                status: 'error',
+                variant: 'left-accent',
+                isClosable: true,
+            })
+        }
+
+        if (data) {
+            const { success, message } = data.createRecipe
+            if (success) {
+                toast({
+                    title: `The recipe was added succesfully`,
+                    status: 'success',
+                    variant: 'left-accent',
+                    isClosable: true,
+                })
+                formikRef.current!.resetForm()
+            } else {
+                toast({
+                    title: message,
+                    status: 'error',
+                    variant: 'left-accent',
+                    isClosable: true,
+                })
+            }
+        }
+    }, [error, toast, data])
 
     return (
         <Formik
@@ -140,6 +174,7 @@ function AddRecipeForm() {
                 service: Yup.string().required('Required'),
                 description: Yup.string().required('Required'),
             })}
+            innerRef={formikRef}
             onSubmit={(
                 { id, name, service, diets, description },
                 { setSubmitting }
