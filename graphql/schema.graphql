@@ -2,10 +2,32 @@
 ### Do not make changes to this file directly
 
 
+type CreateRecipeResponse {
+  """HTTP response code"""
+  code: Int!
+
+  """Human-readable message for the UI"""
+  message: String!
+
+  """The recipe added"""
+  recipe: Recipe
+
+  """Indicates whether the mutation was successful"""
+  success: Boolean!
+}
+
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
+
+"""The diets"""
+enum Diet {
+  CARNIVORE
+  PESCETARIAN
+  VEGAN
+  VEGETARIAN
+}
 
 type Link {
   """FULLSTACK, FRONTEND, BACKEND"""
@@ -27,6 +49,11 @@ type Link {
   url: String
 }
 
+type Mutation {
+  """Add a "Recipe" to the application"""
+  createRecipe(description: String, diets: [Diet], name: String!, recipeId: String!, service: Service!): CreateRecipeResponse!
+}
+
 type Query {
   """
   Query all items "Link"
@@ -44,7 +71,7 @@ type Query {
 
 type Recipe {
   """The date at which the recipe was created inside the database"""
-  createdAt: DateTime!
+  createdAt: DateTime
 
   """
   Description of the recipe, how to do it, is it good, tips & tricks, etc..
@@ -64,8 +91,17 @@ type Recipe {
   service: String
 
   """The date at which the recipe was last updated"""
-  updatedAt: DateTime!
+  updatedAt: DateTime
 
   """An URL heading to the recipe source"""
   url: String
+}
+
+"""The services"""
+enum Service {
+  APERITIF
+  COCKTAIL
+  DESSERT
+  MAIN
+  STARTER
 }
