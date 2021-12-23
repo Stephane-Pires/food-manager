@@ -44,3 +44,34 @@ export const RECIPE = (recipeId: String) => ({
     `,
     variables: { recipeId },
 })
+
+export const CREATE_RECIPE = gql`
+    mutation createRecipe(
+        $recipeId: String!
+        $name: String!
+        $description: String!
+        $service: String!
+        $diets: [String!]
+    ) {
+        createRecipe(
+            recipeId: $recipeId
+            name: $name
+            description: $description
+            service: $service
+            diets: $diets
+        ) {
+            code
+            success
+            message
+            recipe {
+                id
+                name
+                description
+                diets
+                service
+                createdAt
+                updatedAt
+            }
+        }
+    }
+`
