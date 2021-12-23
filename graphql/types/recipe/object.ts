@@ -18,11 +18,11 @@ export const Recipe = objectType({
             description:
                 'Represents the diets for which the recipe is compatible',
         })
-        t.nonNull.dateTime('createdAt', {
+        t.dateTime('createdAt', {
             description:
                 'The date at which the recipe was created inside the database',
         })
-        t.nonNull.dateTime('updatedAt', {
+        t.dateTime('updatedAt', {
             description: 'The date at which the recipe was last updated',
         })
     },
