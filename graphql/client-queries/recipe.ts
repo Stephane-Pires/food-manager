@@ -50,8 +50,8 @@ export const CREATE_RECIPE = gql`
         $recipeId: String!
         $name: String!
         $description: String!
-        $service: String!
-        $diets: [String!]
+        $service: Service!
+        $diets: [Diet!]
     ) {
         createRecipe(
             recipeId: $recipeId
