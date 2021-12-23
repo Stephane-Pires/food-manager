@@ -44,13 +44,18 @@ export const createRecipe = mutationField('createRecipe', {
                 recipe: newRecipe,
             }
         } catch (error) {
-            console.log('error', error)
-            return {
+            const errorResponse = {
                 success: false,
-                code: 404,
-                message: 'Unable to add recipe',
+                code: 500,
                 recipe: null,
+                message: 'Unknown error',
             }
+
+            if (error.code === 'P2002') {
+                errorResponse.message = 'The recipe already exist'
+            }
+
+            return errorResponse
         }
     },
 })
