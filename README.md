@@ -170,13 +170,16 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 
 -   [x] Create README
 -   [x] Migrate to PostgresSQL
--   [abandonned] ScalarTypes nexus DateTim
+-   [abandonned] ScalarTypes nexus DateTime
 -   [x] Formik exploration
 -   [x] Form myself on Apollo
 -   [x] Add mutation "createRecipe"
 -   [ ] Use prisma-nexus to foward type and description from database
--   [ ] Manage success and errors inside the add-recipe page
--   [ ] Rethink/Architecture the data schema of the recipes
+-   [x] Manage success and errors inside the add-recipe page
+-   [ ] Rethink/Architecture _Data Schema_ of the recipes
+-   [ ] Add a navBar
+-   [ ] Add a TextArea for the description field of "add-recipe"
+-   [ ] Create new import category
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
