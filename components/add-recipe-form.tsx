@@ -1,3 +1,4 @@
+import { useMutation } from '@apollo/client'
 import { Form, Formik, useField } from 'formik'
 import { useMemo } from 'react'
 import * as Yup from 'yup'
@@ -15,6 +16,7 @@ import {
     Select,
 } from '@chakra-ui/react'
 
+import { CREATE_RECIPE } from '../graphql/client-queries/recipe'
 import { EnumKey, getEnumFromEnumKey } from '../utils/enums'
 
 function TextInputField({ label, name, type, placeholder }) {
@@ -115,13 +117,18 @@ function CheckboxField({ name, enumKey }) {
 }
 
 function AddRecipeForm() {
+    const [createRecipe, TMP_A_UTILISER] = useMutation(CREATE_RECIPE)
+
+    console.log('TMP_A_UTILISER', TMP_A_UTILISER)
+
     return (
         <Formik
             initialValues={{
                 name: 'Nina',
                 id: 'Mirena',
                 service: 'MAIN',
-                diet: [],
+                diets: [],
+                description: 'some random description',
             }}
             validationSchema={Yup.object({
                 name: Yup.string()
@@ -131,12 +138,22 @@ function AddRecipeForm() {
                     .min(3, 'Must be 3 characters or more')
                     .required('Required'),
                 service: Yup.string().required('Required'),
+                description: Yup.string().required('Required'),
             })}
-            onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    setSubmitting(false)
-                }, 400)
+            onSubmit={(
+                { id, name, service, diets, description },
+                { setSubmitting }
+            ) => {
+                createRecipe({
+                    variables: {
+                        recipeId: id,
+                        name,
+                        service,
+                        diets,
+                        description,
+                    },
+                })
+                setSubmitting(false)
             }}
         >
             <Form>
@@ -160,7 +177,14 @@ function AddRecipeForm() {
                         label="Services"
                     />
 
-                    <CheckboxField name="diet" enumKey={EnumKey.DIET} />
+                    <CheckboxField name="diets" enumKey={EnumKey.DIET} />
+
+                    <TextInputField
+                        label="Description"
+                        name="description"
+                        type="text"
+                        placeholder="Description of the Recipe"
+                    />
 
                     <Button type="submit">Submit</Button>
                 </VStack>
