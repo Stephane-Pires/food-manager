@@ -21,7 +21,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""The diets"""
+"""Represent the diet available in  the application"""
 enum Diet {
   CARNIVORE
   PESCETARIAN
@@ -97,7 +97,7 @@ type Recipe {
   url: String
 }
 
-"""The services"""
+"""Represent the service available in  the application"""
 enum Service {
   APERITIF
   COCKTAIL
