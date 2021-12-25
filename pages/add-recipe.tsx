@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
-import AddRecipeForm from '@components/add-recipe-form'
+import AddRecipeForm from '@components/form/add-recipe-form'
 import Layout from '@components/layout'
 
 export default function AddRecipe() {
