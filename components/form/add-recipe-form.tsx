@@ -15,6 +15,7 @@ import { useToast } from '@chakra-ui/react'
 import CheckboxField from './field/checkbox-field'
 import OptionField from './field/option-field'
 import TextInputField from './field/text-input-field'
+import TextareaField from './field/textarea-field'
 
 function AddRecipeForm() {
     const [createRecipe, { data, error }] = useMutation(CREATE_RECIPE)
@@ -111,12 +112,15 @@ function AddRecipeForm() {
                         label="Services"
                     />
 
-                    <CheckboxField name="diets" enumKey={EnumKey.DIET} />
+                    <CheckboxField
+                        name="diets"
+                        enumKey={EnumKey.DIET}
+                        label="Diets"
+                    />
 
-                    <TextInputField
+                    <TextareaField
                         label="Description"
                         name="description"
-                        type="text"
                         placeholder="Description of the Recipe"
                     />
 

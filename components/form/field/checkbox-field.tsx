@@ -3,9 +3,15 @@ import { useMemo } from 'react'
 
 import { getEnumFromEnumKey } from '@utils/enums'
 
-import { Checkbox, CheckboxGroup, HStack } from '@chakra-ui/react'
+import {
+    Checkbox,
+    CheckboxGroup,
+    FormControl,
+    FormLabel,
+    HStack,
+} from '@chakra-ui/react'
 
-function CheckboxField({ name, enumKey }) {
+function CheckboxField({ name, label, enumKey }) {
     // const [field, meta] = useField({ name })
     // console.log('field', field)
     // console.log('meta', meta)
@@ -17,25 +23,26 @@ function CheckboxField({ name, enumKey }) {
 
     const checkboxItems = useMemo(
         () =>
-            (Object.keys(selectedEnum) as Array<keyof typeof selectedEnum>).map(
-                (selectedEnumKey) => (
-                    <Checkbox
-                        onChange={onChange}
-                        name={name}
-                        key={selectedEnumKey}
-                        value={selectedEnumKey}
-                    >
-                        {selectedEnumKey}
-                    </Checkbox>
-                )
-            ),
+            Object.keys(selectedEnum).map((selectedEnumKey) => (
+                <Checkbox
+                    onChange={onChange}
+                    name={name}
+                    key={selectedEnumKey}
+                    value={selectedEnumKey}
+                >
+                    {selectedEnumKey}
+                </Checkbox>
+            )),
         [onChange, name, selectedEnum]
     )
 
     return (
-        <CheckboxGroup defaultValue={value}>
-            <HStack>{checkboxItems}</HStack>
-        </CheckboxGroup>
+        <FormControl id={name}>
+            <FormLabel htmlFor={name}>{label}</FormLabel>
+            <CheckboxGroup defaultValue={value}>
+                <HStack>{checkboxItems}</HStack>
+            </CheckboxGroup>
+        </FormControl>
     )
 }
 
