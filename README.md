@@ -178,8 +178,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [x] Manage success and errors inside the add-recipe page
 -   [ ] Rethink/Architecture _Data Schema_ of the recipes
 -   [ ] Add a navBar
--   [ ] Add a TextArea for the description field of "add-recipe"
--   [ ] Create new import category
+-   [x] Add a TextArea for the description field of "add-recipe"
+-   [x] Create new import category
+-   [ ] Fix the checkbox still checked problem on "add-recipe-form.tsx"
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
