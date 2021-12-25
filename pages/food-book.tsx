@@ -1,16 +1,20 @@
-import { ApolloQueryResult } from '@apollo/client'
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
+import { ApolloQueryResult } from '@apollo/client'
+
+import { RECIPES } from '@graphql/client-queries/recipe'
+
+import client from '@lib/apollo-client'
+
 import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
-import Layout from '../components/layout'
-import QueryResult from '../components/query-result'
-import { RecipeList } from '../components/recipe'
-import { RECIPES } from '../graphql/client-queries/recipe'
-import client from '../lib/apollo-client'
+import Layout from '@components/layout'
+import QueryResult from '@components/query-result'
+import { RecipeList } from '@components/recipe'
+
 import { Recipe } from '.prisma/client'
 
 interface Data {

@@ -1,4 +1,3 @@
-// /graphql/schema.ts
 import { GraphQLSchema } from 'graphql'
 import { makeSchema } from 'nexus'
 import { join } from 'path'

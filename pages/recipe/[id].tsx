@@ -1,11 +1,17 @@
-import { ApolloQueryResult } from '@apollo/client'
 import { DateTime } from 'luxon'
+
 import { GetStaticPaths, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { Recipe } from '@prisma/client'
+
+import { ApolloQueryResult } from '@apollo/client'
+
+import { RECIPE, RECIPES_ID } from '@graphql/client-queries/recipe'
+
+import client from '@lib/apollo-client'
 
 import { Button } from '@chakra-ui/button'
 import {
@@ -17,11 +23,9 @@ import {
     VStack,
 } from '@chakra-ui/layout'
 
-import Layout from '../../components/layout'
-import QueryResult from '../../components/query-result'
-import { RecipeServiceBadge } from '../../components/recipe'
-import { RECIPE, RECIPES_ID } from '../../graphql/client-queries/recipe'
-import client from '../../lib/apollo-client'
+import Layout from '@components/layout'
+import QueryResult from '@components/query-result'
+import { RecipeServiceBadge } from '@components/recipe'
 
 export default function RecipeView({
     getRecipeResult: {
