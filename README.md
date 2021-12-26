@@ -180,7 +180,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [ ] Add a navBar
 -   [x] Add a TextArea for the description field of "add-recipe"
 -   [x] Create new import category
--   [ ] Fix the checkbox still checked problem on "add-recipe-form.tsx"
+-   [x] Fix the checkbox still checked after "resetForm" problem on "add-recipe-form.tsx" : [480249f447147f613de168b9173697a17ba7d90a]()
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
