@@ -39,7 +39,7 @@ function CheckboxField({ name, label, enumKey }) {
     return (
         <FormControl id={name}>
             <FormLabel htmlFor={name}>{label}</FormLabel>
-            <CheckboxGroup defaultValue={value}>
+            <CheckboxGroup value={value}>
                 <HStack>{checkboxItems}</HStack>
             </CheckboxGroup>
         </FormControl>
