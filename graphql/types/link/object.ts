@@ -1,18 +1,16 @@
 import { objectType } from 'nexus'
+import { Link as nexusPrismaLink } from 'nexus-prisma'
 
 // eslint-disable-next-line import/prefer-default-export
 export const Link = objectType({
-    name: 'Link',
+    name: nexusPrismaLink.$name,
+    description: nexusPrismaLink.$description,
     definition(t) {
-        t.string('id', { description: 'The id of a link' })
-        t.string('name', { description: 'Name of the link' })
-        t.string('url', {
-            description: 'The main page of the site related to the link',
-        })
-        t.string('description', { description: 'My opinion about the Techno' })
-        t.string('category', { description: 'FULLSTACK, FRONTEND, BACKEND' })
-        t.boolean('isItCool', {
-            description: 'Do i found the techno cool to use',
-        })
+        t.field(nexusPrismaLink.id)
+        t.field(nexusPrismaLink.name)
+        t.field(nexusPrismaLink.url)
+        t.field(nexusPrismaLink.description)
+        t.field(nexusPrismaLink.category)
+        t.field(nexusPrismaLink.isItCool)
     },
 })

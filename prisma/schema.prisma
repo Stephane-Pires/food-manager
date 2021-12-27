@@ -6,41 +6,63 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Generate Types to forward to nexus
+generator nexusPrisma {
+  provider = "nexus-prisma"
+}
+
 // Connect to the database  (sqlite, mySQL, mongoDB, PostgreSQL)
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// A table inside the database
+/// A LINK represent a technology i'm using to build this application
 model Link {
+  /// The id of the LINK
   id          String  @id @unique
+  /// The name of the LINK
   name        String
+  /// The description of the LINK, why is this technology usefull what i am doing with it, etc..
   description String
+  /// The url to the main page of the LINK
   url         String
+  /// The STACK that belong to this LINK
   category    Stack
+  /// A simple boolean that state if i like this technology or not
   isItCool    Boolean @default(true)
 }
 
+/// The representation of a RECIPE inside the "Food-Manager" DOMAIN
 model Recipe {
-  id          String   @id @unique
+  /// The id of the RECIPE
+  id          String    @id @unique
+  /// Name of the RECIPE
   name        String
+  /// Description of the RECIPE, how to do it, is it good, tips & tricks, etc..
   description String
+  /// An url heading to the RECIPE source
   url         String
+  /// Represent the Service at which the RECIPE is served
   service     Service
+  /// Represente the Diets for which the RECIPE is compatible
   diets       Diet[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  /// The date at which the RECIPE was created inside the database
+  createdAt   DateTime? @default(now())
+  /// The date at which the RECIPE was last updated
+  updatedAt   DateTime? @updatedAt
 }
 
 // BELOW YOU WILL FIND ENUMERATION
 
+/// Represent the STACK available in the "Food-Manager" DOMAIN
 enum Stack {
   FULLSTACK
   FRONTEND
   BACKEND
 }
 
+/// Represent the DIETS available in the "Food-Manager" DOMAIN
 enum Diet {
   VEGAN
   VEGETARIAN
@@ -48,6 +70,7 @@ enum Diet {
   PESCETARIAN
 }
 
+/// Represent the SERVICES available in the "Food-Manager" DOMAIN
 enum Service {
   APERITIF
   STARTER

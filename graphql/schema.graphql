@@ -21,7 +21,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""Represent the diet available in  the application"""
+"""Represent the DIETS available in the "Food-Manager" DOMAIN"""
 enum Diet {
   CARNIVORE
   PESCETARIAN
@@ -29,24 +29,27 @@ enum Diet {
   VEGETARIAN
 }
 
+"""A LINK represent a technology i'm using to build this application"""
 type Link {
-  """FULLSTACK, FRONTEND, BACKEND"""
-  category: String
+  """The STACK that belong to this LINK"""
+  category: Stack!
 
-  """My opinion about the Techno"""
-  description: String
+  """
+  The description of the LINK, why is this technology usefull what i am doing with it, etc..
+  """
+  description: String!
 
-  """The id of a link"""
-  id: String
+  """The id of the LINK"""
+  id: ID!
 
-  """Do i found the techno cool to use"""
-  isItCool: Boolean
+  """A simple boolean that state if i like this technology or not"""
+  isItCool: Boolean!
 
-  """Name of the link"""
-  name: String
+  """The name of the LINK"""
+  name: String!
 
-  """The main page of the site related to the link"""
-  url: String
+  """The url to the main page of the LINK"""
+  url: String!
 }
 
 type Mutation {
@@ -69,39 +72,47 @@ type Query {
   recipes: [Recipe]!
 }
 
+"""The representation of a RECIPE inside the "Food-Manager" DOMAIN"""
 type Recipe {
-  """The date at which the recipe was created inside the database"""
+  """The date at which the RECIPE was created inside the database"""
   createdAt: DateTime
 
   """
-  Description of the recipe, how to do it, is it good, tips & tricks, etc..
+  Description of the RECIPE, how to do it, is it good, tips & tricks, etc..
   """
-  description: String
+  description: String!
 
-  """Represents the diets for which the recipe is compatible"""
-  diets: [String]
+  """Represente the Diets for which the RECIPE is compatible"""
+  diets: [Diet!]!
 
-  """Id of a recipe"""
-  id: String
+  """The id of the RECIPE"""
+  id: ID!
 
-  """Name of the recipe"""
-  name: String
+  """Name of the RECIPE"""
+  name: String!
 
-  """Represent the service at which the recipe is served"""
-  service: String
+  """Represent the Service at which the RECIPE is served"""
+  service: Service!
 
-  """The date at which the recipe was last updated"""
+  """The date at which the RECIPE was last updated"""
   updatedAt: DateTime
 
-  """An URL heading to the recipe source"""
-  url: String
+  """An url heading to the RECIPE source"""
+  url: String!
 }
 
-"""Represent the service available in  the application"""
+"""Represent the SERVICES available in the "Food-Manager" DOMAIN"""
 enum Service {
   APERITIF
   COCKTAIL
   DESSERT
   MAIN
   STARTER
+}
+
+"""Represent the diet available in the "Food-Manager" DOMAIN"""
+enum Stack {
+  BACKEND
+  FRONTEND
+  FULLSTACK
 }
