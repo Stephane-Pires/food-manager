@@ -1,4 +1,4 @@
-import { GraphQLSchema } from 'graphql'
+// import { GraphQLSchema } from 'graphql'
 import { makeSchema } from 'nexus'
 import { join } from 'path'
 
@@ -24,7 +24,8 @@ const schema = makeSchema({
         export: 'Context',
         module: join(process.cwd(), 'graphql', 'context.ts'),
     },
-}) as unknown as GraphQLSchema
+})
+//  as unknown as GraphQLSchema
 // FAT WORKAROUND TO DELETE AS SOON AS POSSIBLE
 // https://github.com/graphql-nexus/nexus/issues/1019
 
