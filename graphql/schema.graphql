@@ -110,7 +110,7 @@ enum Service {
   STARTER
 }
 
-"""Represent the diet available in the "Food-Manager" DOMAIN"""
+"""Represent the STACK available in the "Food-Manager" DOMAIN"""
 enum Stack {
   BACKEND
   FRONTEND
