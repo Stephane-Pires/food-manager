@@ -174,13 +174,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [x] Formik exploration
 -   [x] Form myself on Apollo
 -   [x] Add mutation "createRecipe"
--   [ ] Use prisma-nexus to foward type and description from database
+-   [x] Use prisma-nexus to foward type and description from database
 -   [x] Manage success and errors inside the add-recipe page
 -   [ ] Rethink/Architecture _Data Schema_ of the recipes
 -   [ ] Add a navBar
 -   [x] Add a TextArea for the description field of "add-recipe"
 -   [x] Create new import category
 -   [x] Fix the checkbox still checked after "resetForm" problem on "add-recipe-form.tsx" : [480249f447147f613de168b9173697a17ba7d90a]()
+-   [ ] Fix the bug on "food-book", it should display the recipes properly with the one that was just added after a succeded mutation. in order Check:
+    -   1️⃣ the SSR/Static workflow of NextJS
+    -   2️⃣ Apollo mutation/query/cache
+    -   The bug doesn't happend when the App recompile after a mutation
 
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
