@@ -1,29 +1,18 @@
 import { objectType } from 'nexus'
+import { Recipe as nexusPrismaRecipe } from 'nexus-prisma'
 
 // eslint-disable-next-line import/prefer-default-export
 export const Recipe = objectType({
-    name: 'Recipe',
+    name: nexusPrismaRecipe.$name,
+    description: nexusPrismaRecipe.$description,
     definition(t) {
-        t.string('id', { description: 'Id of a recipe' })
-        t.string('name', { description: 'Name of the recipe' })
-        t.string('description', {
-            description:
-                'Description of the recipe, how to do it, is it good, tips & tricks, etc..',
-        })
-        t.string('url', { description: 'An URL heading to the recipe source' })
-        t.string('service', {
-            description: 'Represent the service at which the recipe is served',
-        })
-        t.list.string('diets', {
-            description:
-                'Represents the diets for which the recipe is compatible',
-        })
-        t.dateTime('createdAt', {
-            description:
-                'The date at which the recipe was created inside the database',
-        })
-        t.dateTime('updatedAt', {
-            description: 'The date at which the recipe was last updated',
-        })
+        t.field(nexusPrismaRecipe.id)
+        t.field(nexusPrismaRecipe.name)
+        t.field(nexusPrismaRecipe.description)
+        t.field(nexusPrismaRecipe.url)
+        t.field(nexusPrismaRecipe.service)
+        t.field(nexusPrismaRecipe.diets)
+        t.field(nexusPrismaRecipe.updatedAt)
+        t.field(nexusPrismaRecipe.createdAt)
     },
 })

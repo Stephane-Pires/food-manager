@@ -1,16 +1,4 @@
-import { enumType, list, mutationField, nonNull, stringArg } from 'nexus'
-
-const Service = enumType({
-    name: 'Service',
-    members: ['APERITIF', 'STARTER', 'MAIN', 'DESSERT', 'COCKTAIL'],
-    description: 'Represent the service available in  the application',
-})
-
-const Diet = enumType({
-    name: 'Diet',
-    members: ['VEGAN', 'VEGETARIAN', 'CARNIVORE', 'PESCETARIAN'],
-    description: 'Represent the diet available in  the application',
-})
+import { list, mutationField, nonNull, stringArg } from 'nexus'
 
 // eslint-disable-next-line import/prefer-default-export
 export const createRecipe = mutationField('createRecipe', {
@@ -20,8 +8,8 @@ export const createRecipe = mutationField('createRecipe', {
         recipeId: nonNull(stringArg()),
         name: nonNull(stringArg()),
         description: stringArg(),
-        service: nonNull(Service),
-        diets: list(Diet),
+        service: nonNull('Service'),
+        diets: list('Diet'),
     },
     async resolve(_, { recipeId, diets, service, name, description }, context) {
         const newRecipe = {
