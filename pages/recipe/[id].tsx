@@ -88,9 +88,9 @@ export default function RecipeView({
                     </GridItem>
                     <GridItem rowSpan={1} colSpan={1}>
                         <Center>
-                            <Link href="/food-book" passHref>
+                            <Link href="/cook-book" passHref>
                                 <Button variant="outline" size="lg">
-                                    Food Book
+                                    Cook Book
                                 </Button>
                             </Link>
                         </Center>

@@ -12,7 +12,7 @@ module.exports = {
                 'graphql',
                 'database',
                 'assets',
-                'food book',
+                'cook book',
                 'recipe',
                 'add-recipe',
                 'utils',

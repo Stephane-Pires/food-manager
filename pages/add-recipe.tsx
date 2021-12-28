@@ -11,7 +11,7 @@ export default function AddRecipe() {
     return (
         <Layout>
             <Head>
-                <title>Food Book</title>
+                <title>Cook Book</title>
             </Head>
             <Center>
                 <Flex direction="column">
@@ -23,9 +23,9 @@ export default function AddRecipe() {
             </Center>
             <Center>
                 <Flex direction="column">
-                    <Link href="/food-book" passHref>
+                    <Link href="/cook-book" passHref>
                         <Button variant="outline" size="lg">
-                            Food Book
+                            Cook Book
                         </Button>
                     </Link>
                 </Flex>

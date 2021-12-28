@@ -31,7 +31,7 @@ export async function getStaticProps() {
     }
 }
 
-export default function FoodBook({
+export default function CookBook({
     recipesResult: {
         loading,
         error,
@@ -42,11 +42,11 @@ export default function FoodBook({
         <Layout>
             <QueryResult loading={loading} error={error} data={recipes}>
                 <Head>
-                    <title>Food Book</title>
+                    <title>Cook Book</title>
                 </Head>
                 <Center>
                     <Flex direction="column">
-                        <Text fontSize="6xl">Food Book</Text>
+                        <Text fontSize="6xl">Cook Book</Text>
                         <Text fontSize="xl">Index of recipes</Text>
                     </Flex>
                 </Center>
