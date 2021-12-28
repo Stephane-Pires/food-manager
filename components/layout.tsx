@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import Navigation from './navigation'
+
 export const SITE_TITLE = 'Food Manager 🍫'
 
 interface Props {
@@ -24,7 +26,10 @@ export default function Layout({ children }: Props) {
                 <meta name="og:title" content={SITE_TITLE} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <main>{children}</main>
+            <main>
+                <Navigation />
+                {children}
+            </main>
         </>
     )
 }
