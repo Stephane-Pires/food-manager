@@ -1,4 +1,3 @@
-// import { InferGetStaticPropsType } from 'next'
 import { InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -18,17 +17,6 @@ import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
 import { RecipeList } from '@components/recipe'
 
-// export async function getStaticProps() {
-//     const recipesResult: ApolloQueryResult<Data> = await client.query(RECIPES)
-
-//     return {
-//         props: {
-//             recipesResult,
-//         },
-//         revalidate: 10,
-//     }
-// }
-
 export const getServerSideProps = async () => {
     const recipesResult: ApolloQueryResult<{ recipes: Recipe[] }> =
         await client.query(RECIPES)
@@ -46,8 +34,7 @@ export default function CookBook({
         error,
         data: { recipes },
     },
-}: // }: InferGetStaticPropsType<typeof getStaticProps>) {
-InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <Layout>
             <QueryResult loading={loading} error={error} data={recipes}>
