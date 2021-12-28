@@ -181,11 +181,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [x] Add a TextArea for the description field of "add-recipe"
 -   [x] Create new import category
 -   [x] Fix the checkbox still checked after "resetForm" problem on "add-recipe-form.tsx" : [480249f447147f613de168b9173697a17ba7d90a]()
--   [ ] Fix the bug on "food-book", it should display the recipes properly with the one that was just added after a succeded mutation. in order Check:
+-   [x] Fix the bug on "cook-book", it should display the recipes properly with the one that was just added after a succeded mutation. in order Check:
     -   1️⃣ the SSR/Static workflow of NextJS
     -   2️⃣ Apollo mutation/query/cache
     -   The bug doesn't happend when the App recompile after a mutation
-
+-   [ ] Learn more about Apollo & GraphQL (_notably cache management_)
+-   [ ] Refactor/Add Typescript (_notably Formik, ApolloClient, NextJS_)
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>

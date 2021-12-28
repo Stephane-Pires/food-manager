@@ -1,6 +1,8 @@
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+
+import { Recipe } from '@prisma/client'
 
 import { ApolloQueryResult } from '@apollo/client'
 
@@ -15,14 +17,9 @@ import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
 import { RecipeList } from '@components/recipe'
 
-import { Recipe } from '.prisma/client'
-
-interface Data {
-    recipes: Recipe[]
-}
-
-export async function getStaticProps() {
-    const recipesResult: ApolloQueryResult<Data> = await client.query(RECIPES)
+export const getServerSideProps = async () => {
+    const recipesResult: ApolloQueryResult<{ recipes: Recipe[] }> =
+        await client.query(RECIPES)
 
     return {
         props: {
@@ -31,22 +28,22 @@ export async function getStaticProps() {
     }
 }
 
-export default function FoodBook({
+export default function CookBook({
     recipesResult: {
         loading,
         error,
         data: { recipes },
     },
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <Layout>
             <QueryResult loading={loading} error={error} data={recipes}>
                 <Head>
-                    <title>Food Book</title>
+                    <title>Cook Book</title>
                 </Head>
                 <Center>
                     <Flex direction="column">
-                        <Text fontSize="6xl">Food Book</Text>
+                        <Text fontSize="6xl">Cook Book</Text>
                         <Text fontSize="xl">Index of recipes</Text>
                     </Flex>
                 </Center>
