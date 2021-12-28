@@ -14,14 +14,7 @@ import { RECIPE, RECIPES_ID } from '@graphql/client-queries/recipe'
 import client from '@lib/apollo-client'
 
 import { Button } from '@chakra-ui/button'
-import {
-    Center,
-    Grid,
-    GridItem,
-    Heading,
-    Text,
-    VStack,
-} from '@chakra-ui/layout'
+import { Grid, GridItem, Heading, Text, VStack } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
@@ -85,15 +78,6 @@ export default function RecipeView({
                                 </Button>
                             </Link>
                         </VStack>
-                    </GridItem>
-                    <GridItem rowSpan={1} colSpan={1}>
-                        <Center>
-                            <Link href="/cook-book" passHref>
-                                <Button variant="outline" size="lg">
-                                    Cook Book
-                                </Button>
-                            </Link>
-                        </Center>
                     </GridItem>
                 </Grid>
             </QueryResult>

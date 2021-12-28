@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
 
-import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import AddRecipeForm from '@components/form/add-recipe-form'
@@ -20,15 +18,6 @@ export default function AddRecipe() {
             </Center>
             <Center>
                 <AddRecipeForm />
-            </Center>
-            <Center>
-                <Flex direction="column">
-                    <Link href="/cook-book" passHref>
-                        <Button variant="outline" size="lg">
-                            Cook Book
-                        </Button>
-                    </Link>
-                </Flex>
             </Center>
         </Layout>
     )

@@ -1,6 +1,5 @@
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
-import NextLink from 'next/link'
 
 import { ApolloQueryResult } from '@apollo/client'
 
@@ -8,7 +7,6 @@ import LINKS from '@graphql/client-queries/link'
 
 import client from '@lib/apollo-client'
 
-import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout, { SITE_TITLE } from '@components/layout'
@@ -54,14 +52,6 @@ export default function Home({
                 </Center>
 
                 <TechTable links={links} />
-
-                <Center>
-                    <NextLink href="/cook-book" passHref>
-                        <Button variant="outline" size="lg">
-                            Cook Book
-                        </Button>
-                    </NextLink>
-                </Center>
             </QueryResult>
         </Layout>
     )

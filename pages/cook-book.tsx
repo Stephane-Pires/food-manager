@@ -1,6 +1,5 @@
 import { InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 
 import { Recipe } from '@prisma/client'
 
@@ -10,7 +9,6 @@ import { RECIPES } from '@graphql/client-queries/recipe'
 
 import client from '@lib/apollo-client'
 
-import { Button } from '@chakra-ui/button'
 import { Center, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
@@ -48,22 +46,6 @@ export default function CookBook({
                     </Flex>
                 </Center>
                 <RecipeList recipes={recipes} />
-                <Center>
-                    <Flex direction="column">
-                        <Center>
-                            <Link href="/" passHref>
-                                <Button variant="outline" size="lg">
-                                    Tech Stack
-                                </Button>
-                            </Link>
-                            <Link href="/add-recipe" passHref>
-                                <Button variant="outline" size="lg">
-                                    Add Recipe
-                                </Button>
-                            </Link>
-                        </Center>
-                    </Flex>
-                </Center>
             </QueryResult>
         </Layout>
     )
