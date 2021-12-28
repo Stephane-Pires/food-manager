@@ -100,18 +100,33 @@ async function main() {
         },
     })
 
-    const sqlite = await prisma.link.upsert({
-        where: { id: 'sqlite' },
+    const postgre = await prisma.link.upsert({
+        where: { id: 'postgre' },
         update: {},
         create: {
-            id: 'sqlite',
-            name: 'Sqlite',
-            url: 'https://www.sqlite.org/index.html',
-            description: 'A Lightweight database',
+            id: 'postgre',
+            name: 'PostgreSQL',
+            url: 'https://www.postgresql.org',
+            description:
+                'An unavoidable relational database, with everything you need',
             category: 'BACKEND',
             isItCool: true,
         },
     })
+
+    const formik = await prisma.link.upsert({
+        where: { id: 'formik' },
+        update: {},
+        create: {
+            id: 'formik',
+            name: 'Formik',
+            url: 'https://formik.org',
+            description: 'A really nice abstraction for React form',
+            category: 'FRONTEND',
+            isItCool: true,
+        },
+    })
+
     console.log({
         react,
         karma,
@@ -120,7 +135,8 @@ async function main() {
         prismaSeed,
         apollo,
         graphql,
-        sqlite,
+        postgre,
+        formik,
     })
 
     // SEEDS FOR THE RECIPE
