@@ -16,6 +16,7 @@ module.exports = {
                 'recipe',
                 'add-recipe',
                 'utils',
+                'layout',
             ],
         ],
     },
