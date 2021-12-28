@@ -11,19 +11,19 @@ function Navigation() {
         >
             <BreadcrumbItem>
                 <Link href="/" passHref>
-                    <BreadcrumbLink>Link</BreadcrumbLink>
+                    <BreadcrumbLink>Stack 🚀</BreadcrumbLink>
                 </Link>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
                 <Link href="/cook-book" passHref>
-                    <BreadcrumbLink>Cook Book</BreadcrumbLink>
+                    <BreadcrumbLink>Cook Book 📙</BreadcrumbLink>
                 </Link>
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
                 <Link href="/add-recipe" passHref>
-                    <BreadcrumbLink>Add recipe</BreadcrumbLink>
+                    <BreadcrumbLink>Add recipe ➕</BreadcrumbLink>
                 </Link>
             </BreadcrumbItem>
         </Breadcrumb>
