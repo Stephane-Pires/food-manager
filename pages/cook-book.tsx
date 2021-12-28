@@ -1,6 +1,9 @@
-import { InferGetStaticPropsType } from 'next'
+// import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+
+import { Recipe } from '@prisma/client'
 
 import { ApolloQueryResult } from '@apollo/client'
 
@@ -15,14 +18,20 @@ import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
 import { RecipeList } from '@components/recipe'
 
-import { Recipe } from '.prisma/client'
+// export async function getStaticProps() {
+//     const recipesResult: ApolloQueryResult<Data> = await client.query(RECIPES)
 
-interface Data {
-    recipes: Recipe[]
-}
+//     return {
+//         props: {
+//             recipesResult,
+//         },
+//         revalidate: 10,
+//     }
+// }
 
-export async function getStaticProps() {
-    const recipesResult: ApolloQueryResult<Data> = await client.query(RECIPES)
+export const getServerSideProps = async () => {
+    const recipesResult: ApolloQueryResult<{ recipes: Recipe[] }> =
+        await client.query(RECIPES)
 
     return {
         props: {
@@ -37,7 +46,8 @@ export default function CookBook({
         error,
         data: { recipes },
     },
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: // }: InferGetStaticPropsType<typeof getStaticProps>) {
+InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <Layout>
             <QueryResult loading={loading} error={error} data={recipes}>

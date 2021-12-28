@@ -1,21 +1,25 @@
-import { gql } from '@apollo/client'
+import { gql, OperationVariables, QueryOptions } from '@apollo/client'
 
-export const RECIPES = {
-    query: gql`
-        query getRecipes {
-            recipes {
-                id
-                name
-                description
-                url
-                service
-                diets
-                createdAt
-                updatedAt
+import { Recipe } from '.prisma/client'
+
+export const RECIPES: QueryOptions<OperationVariables, { recipes: Recipe[] }> =
+    {
+        query: gql`
+            query getRecipes {
+                recipes {
+                    id
+                    name
+                    description
+                    url
+                    service
+                    diets
+                    createdAt
+                    updatedAt
+                }
             }
-        }
-    `,
-}
+        `,
+        fetchPolicy: 'network-only',
+    }
 
 export const RECIPES_ID = {
     query: gql`
