@@ -185,7 +185,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
     -   1️⃣ the SSR/Static workflow of NextJS
     -   2️⃣ Apollo mutation/query/cache
     -   The bug doesn't happend when the App recompile after a mutation
-
+-   [ ] Learn more about Apollo & GraphQL (_notably cache management_)
+-   [ ] Refactor/Add Typescript (_notably Formik, ApolloClient, NextJS_)
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
