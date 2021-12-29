@@ -10,6 +10,7 @@ import client from '@lib/apollo-client'
 import { Center, Divider, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
+import { TITLE } from '@components/navigation'
 import QueryResult from '@components/query-result'
 import TechTable from '@components/tech-table'
 
@@ -40,11 +41,11 @@ export default function Home({
         <Layout>
             <QueryResult loading={loading} error={error} data={links}>
                 <Head>
-                    <title>Stack 🚀</title>
+                    <title>{TITLE.HOME}</title>
                 </Head>
                 <Center>
                     <Flex direction="column">
-                        <Text fontSize="6xl">Stack 🚀</Text>
+                        <Text fontSize="6xl">{TITLE.HOME}</Text>
                         <Divider />
                     </Flex>
                 </Center>

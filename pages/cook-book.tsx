@@ -12,6 +12,7 @@ import client from '@lib/apollo-client'
 import { Center, Divider, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
+import { TITLE } from '@components/navigation'
 import QueryResult from '@components/query-result'
 import { RecipeList } from '@components/recipe'
 
@@ -37,11 +38,11 @@ export default function CookBook({
         <Layout>
             <QueryResult loading={loading} error={error} data={recipes}>
                 <Head>
-                    <title>Cook Book 📙</title>
+                    <title>{TITLE.COOK_BOOK}</title>
                 </Head>
                 <Center>
                     <Flex direction="column">
-                        <Text fontSize="6xl">Cook Book 📙</Text>
+                        <Text fontSize="6xl">{TITLE.COOK_BOOK}</Text>
                         <Divider />
                     </Flex>
                 </Center>
