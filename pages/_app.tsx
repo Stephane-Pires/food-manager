@@ -1,3 +1,5 @@
+import { RecoilRoot } from 'recoil'
+
 import { AppProps } from 'next/app'
 
 import { ApolloProvider } from '@apollo/client'
@@ -11,10 +13,12 @@ import '@styles/global.css'
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <ApolloProvider client={client}>
-            <ChakraProvider>
-                {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                <Component {...pageProps} />
-            </ChakraProvider>
+            <RecoilRoot>
+                <ChakraProvider>
+                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                    <Component {...pageProps} />
+                </ChakraProvider>
+            </RecoilRoot>
         </ApolloProvider>
     )
 }
