@@ -9,7 +9,7 @@ import { RECIPES } from '@graphql/client-queries/recipe'
 
 import client from '@lib/apollo-client'
 
-import { Center, Flex, Text } from '@chakra-ui/layout'
+import { Center, Divider, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
@@ -37,12 +37,12 @@ export default function CookBook({
         <Layout>
             <QueryResult loading={loading} error={error} data={recipes}>
                 <Head>
-                    <title>Cook Book</title>
+                    <title>Cook Book 📙</title>
                 </Head>
                 <Center>
                     <Flex direction="column">
-                        <Text fontSize="6xl">Cook Book</Text>
-                        <Text fontSize="xl">Index of recipes</Text>
+                        <Text fontSize="6xl">Cook Book 📙</Text>
+                        <Divider />
                     </Flex>
                 </Center>
                 <RecipeList recipes={recipes} />

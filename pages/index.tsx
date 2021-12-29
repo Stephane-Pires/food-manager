@@ -7,9 +7,9 @@ import LINKS from '@graphql/client-queries/link'
 
 import client from '@lib/apollo-client'
 
-import { Center, Flex, Text } from '@chakra-ui/layout'
+import { Center, Divider, Flex, Text } from '@chakra-ui/layout'
 
-import Layout, { SITE_TITLE } from '@components/layout'
+import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
 import TechTable from '@components/tech-table'
 
@@ -40,14 +40,12 @@ export default function Home({
         <Layout>
             <QueryResult loading={loading} error={error} data={links}>
                 <Head>
-                    <title>{SITE_TITLE}</title>
+                    <title>Stack 🚀</title>
                 </Head>
                 <Center>
                     <Flex direction="column">
-                        <Text fontSize="6xl">Food Manager</Text>
-                        <Text fontSize="xl">
-                            Tech stack of the Food Manager
-                        </Text>
+                        <Text fontSize="6xl">Stack 🚀</Text>
+                        <Divider />
                     </Flex>
                 </Center>
 
