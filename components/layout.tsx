@@ -30,7 +30,9 @@ export default function Layout({ children }: Props) {
             </Head>
             <main>
                 <Navigation />
-                <VStack spacing={10}>{children}</VStack>
+                <VStack alignItems="stretch" spacing={10}>
+                    {children}
+                </VStack>
             </main>
         </>
     )
