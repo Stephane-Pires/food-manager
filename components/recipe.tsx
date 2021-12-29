@@ -51,14 +51,21 @@ export function RecipeCard({
                 borderWidth="4px"
                 borderRadius="xl"
                 cursor="pointer"
+                borderColor="transparent"
+                bgGradient={`linear(to-b,  ${color} , gray.200)`}
+                backgroundClip="border-box"
+                borderTopColor={color}
+                borderBottomColor="gray.200"
             >
-                <VStack height="100%" justifyContent="space-between">
+                <VStack
+                    height="100%"
+                    justifyContent="space-between"
+                    backgroundColor="white"
+                >
                     <HStack
                         backgroundColor={color}
                         width="100%"
                         justifyContent="center"
-                        borderTopLeftRadius="md"
-                        borderTopRightRadius="md"
                     >
                         <Text textColor="white">Service : </Text>
                         <RecipeServiceBadge service={service} />
@@ -75,8 +82,6 @@ export function RecipeCard({
                         backgroundColor="gray.200"
                         width="100%"
                         justifyContent="center"
-                        borderBottomLeftRadius="md"
-                        borderBottomRightRadius="md"
                     >
                         <Text size="md">
                             Added the :{' '}
