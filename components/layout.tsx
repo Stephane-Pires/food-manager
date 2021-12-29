@@ -1,7 +1,8 @@
 import Head from 'next/head'
 
-import { VStack } from '@chakra-ui/layout'
+import { HStack, VStack } from '@chakra-ui/layout'
 
+import Cart from './cart'
 import Navigation from './navigation'
 
 export const SITE_TITLE = 'Food Manager 🍫'
@@ -29,7 +30,10 @@ export default function Layout({ children }: Props) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main>
-                <Navigation />
+                <HStack justifyContent="space-between" margin="1em">
+                    <Navigation />
+                    <Cart />
+                </HStack>
                 <VStack alignItems="stretch" spacing={10}>
                     {children}
                 </VStack>
