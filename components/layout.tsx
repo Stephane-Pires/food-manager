@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import { VStack } from '@chakra-ui/layout'
+
 import Navigation from './navigation'
 
 export const SITE_TITLE = 'Food Manager 🍫'
@@ -28,7 +30,7 @@ export default function Layout({ children }: Props) {
             </Head>
             <main>
                 <Navigation />
-                {children}
+                <VStack spacing={10}>{children}</VStack>
             </main>
         </>
     )
