@@ -1,102 +1,103 @@
+import { DateTime } from 'luxon'
+
 import Link from 'next/link'
 
-import { Button } from '@chakra-ui/button'
+import useEnumInfo from '@utils/hooks'
+
 import {
     Badge,
     Box,
     Heading,
+    HStack,
     SimpleGrid,
     Text,
     VStack,
 } from '@chakra-ui/layout'
 
-import { Diet, Recipe, Service } from '.prisma/client'
+import { Recipe } from '.prisma/client'
 
 export function RecipeServiceBadge({ service }) {
-    const getBadge = () => {
-        switch (service) {
-            case Service.COCKTAIL:
-                return <Badge colorScheme="red">Cocktail</Badge>
+    const { color, label } = useEnumInfo(service)
 
-            case Service.STARTER:
-                return <Badge colorScheme="green">Starter</Badge>
-
-            case Service.MAIN:
-                return <Badge colorScheme="blue">Main</Badge>
-
-            case Service.DESSERT:
-                return <Badge colorScheme="purple">Dessert</Badge>
-
-            case Service.APERITIF:
-                return <Badge colorScheme="purple">Aperitif</Badge>
-
-            default:
-                return (
-                    <Badge colorScheme="black">
-                        No Service badge available
-                    </Badge>
-                )
-        }
-    }
-
-    return getBadge()
+    return (
+        <Badge textColor="white" backgroundColor={color}>
+            {label}
+        </Badge>
+    )
 }
 
 export function RecipeDietBadge({ diet }) {
-    const getBadge = () => {
-        switch (diet) {
-            case Diet.CARNIVORE:
-                return <Badge colorScheme="red">Carnivore</Badge>
+    const { color, label } = useEnumInfo(diet)
 
-            case Diet.PESCETARIAN:
-                return <Badge colorScheme="blue">Pescetarian</Badge>
-
-            case Diet.VEGAN:
-                return <Badge colorScheme="green">Vegan</Badge>
-
-            case Diet.VEGETARIAN:
-                return <Badge colorScheme="dark green">Vegetarian</Badge>
-
-            default:
-                return (
-                    <Badge colorScheme="black">No Diet badge available</Badge>
-                )
-        }
-    }
-
-    return getBadge()
+    return (
+        <Badge textColor="white" backgroundColor={color}>
+            {label}
+        </Badge>
+    )
 }
 
 export function RecipeCard({
-    recipe: { id, name, service, diets, description },
+    recipe: { id, name, service, diets, createdAt },
 }: {
     recipe: Recipe
 }) {
+    const { color } = useEnumInfo(service)
     return (
-        <Box bg="tomato" height="200px" width="200px">
-            <VStack>
-                <Heading size="md">{name}</Heading>
+        <Link href={`/recipe/${id}`} passHref>
+            <Box
+                height="35vh"
+                width="15vw"
+                minWidth="270px"
+                borderWidth="4px"
+                borderRadius="xl"
+                cursor="pointer"
+            >
+                <VStack height="100%" justifyContent="space-between">
+                    <HStack
+                        backgroundColor={color}
+                        width="100%"
+                        justifyContent="center"
+                        borderTopLeftRadius="md"
+                        borderTopRightRadius="md"
+                    >
+                        <Text textColor="white">Service : </Text>
+                        <RecipeServiceBadge service={service} />
+                    </HStack>
+                    <Heading size="md">{name}</Heading>
 
-                <Text size="md">{description}</Text>
+                    <VStack>
+                        {diets.map((diet) => (
+                            <RecipeDietBadge key={diet} diet={diet} />
+                        ))}
+                    </VStack>
 
-                <RecipeServiceBadge service={service} />
-
-                {diets.map((diet) => (
-                    <RecipeDietBadge key={diet} diet={diet} />
-                ))}
-
-                <Link href={`/recipe/${id}`} passHref>
-                    <Button variant="outline" size="md">
-                        Go to Recipe {name}
-                    </Button>
-                </Link>
-            </VStack>
-        </Box>
+                    <HStack
+                        backgroundColor="gray.200"
+                        width="100%"
+                        justifyContent="center"
+                        borderBottomLeftRadius="md"
+                        borderBottomRightRadius="md"
+                    >
+                        <Text size="md">
+                            Added the :{' '}
+                            {DateTime.fromISO(`${createdAt}`).toLocaleString(
+                                DateTime.DATE_MED
+                            )}
+                        </Text>
+                    </HStack>
+                </VStack>
+            </Box>
+        </Link>
     )
 }
 export function RecipeList({ recipes }: { recipes: Recipe[] }) {
     return (
-        <SimpleGrid columns={6} spacing={10}>
+        <SimpleGrid
+            columns={{ sm: 1, md: 2, xl: 4 }}
+            spacing={10}
+            marginX="5vw"
+            justifyItems="center"
+        >
             {recipes &&
                 recipes.map((recipe) => (
                     <RecipeCard key={recipe.id} recipe={recipe} />
