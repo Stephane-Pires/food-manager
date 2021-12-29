@@ -45,8 +45,8 @@ export function RecipeCard({
     return (
         <Link href={`/recipe/${id}`} passHref>
             <Box
-                height="35vh"
-                width="15vw"
+                height="30vh"
+                width="10vw"
                 minWidth="270px"
                 borderWidth="4px"
                 borderRadius="xl"
