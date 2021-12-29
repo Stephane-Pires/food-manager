@@ -1,7 +1,13 @@
+import { useRecoilState } from 'recoil'
+
+import plannedRecipesCountState from '@lib/recoil/atoms'
+
 import { AttachmentIcon } from '@chakra-ui/icons'
 import { Avatar, AvatarBadge } from '@chakra-ui/react'
 
 function Cart() {
+    const [plannedRecipesCount] = useRecoilState(plannedRecipesCountState)
+
     return (
         <Avatar
             boxSize="3em"
@@ -9,7 +15,7 @@ function Cart() {
             bg="gray.200"
         >
             <AvatarBadge bg="blue.400" textColor="white" boxSize="2em">
-                0
+                {plannedRecipesCount}
             </AvatarBadge>
         </Avatar>
     )

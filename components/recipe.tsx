@@ -1,8 +1,11 @@
 import { DateTime } from 'luxon'
+import { useRecoilState } from 'recoil'
 
 import Link from 'next/link'
 
 import useEnumInfo from '@utils/hooks'
+
+import plannedRecipesCountState from '@lib/recoil/atoms'
 
 import { Button } from '@chakra-ui/button'
 import {
@@ -43,6 +46,13 @@ export function RecipeCard({
     recipe: Recipe
 }) {
     const { color } = useEnumInfo(service)
+    const [plannedRecipesCount, setPlannedRecipesCount] = useRecoilState(
+        plannedRecipesCountState
+    )
+
+    const handleClick = () => {
+        setPlannedRecipesCount(plannedRecipesCount + 1)
+    }
     return (
         <Box
             height="30vh"
@@ -79,7 +89,7 @@ export function RecipeCard({
                         <RecipeDietBadge key={diet} diet={diet} />
                     ))}
                 </VStack>
-                <Button>➕</Button>
+                <Button onClick={handleClick}>➕</Button>
 
                 <HStack
                     backgroundColor="gray.200"
