@@ -177,7 +177,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [x] Use prisma-nexus to foward type and description from database
 -   [x] Manage success and errors inside the add-recipe page
 -   [ ] Rethink/Architecture _Data Schema_ of the recipes
--   [ ] Add a navBar
+-   [x] Add a navBar
 -   [x] Add a TextArea for the description field of "add-recipe"
 -   [x] Create new import category
 -   [x] Fix the checkbox still checked after "resetForm" problem on "add-recipe-form.tsx" : [480249f447147f613de168b9173697a17ba7d90a]()
@@ -187,6 +187,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
     -   The bug doesn't happend when the App recompile after a mutation
 -   [ ] Learn more about Apollo & GraphQL (_notably cache management_)
 -   [ ] Refactor/Add Typescript (_notably Formik, ApolloClient, NextJS_)
+-   [ ] Use Recoil to manage a number count
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
