@@ -18,7 +18,7 @@ import { Grid, GridItem, Heading, Text, VStack } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
 import QueryResult from '@components/query-result'
-import { RecipeServiceBadge } from '@components/recipe'
+import { RecipeServiceBadge } from '@components/recipe/recipe-badge'
 
 export default function RecipeView({
     getRecipeResult: {

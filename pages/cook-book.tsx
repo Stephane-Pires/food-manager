@@ -14,7 +14,7 @@ import { Center, Divider, Flex, Text } from '@chakra-ui/layout'
 import Layout from '@components/layout'
 import { TITLE } from '@components/navigation'
 import QueryResult from '@components/query-result'
-import { RecipeList } from '@components/recipe'
+import RecipeList from '@components/recipe/recipe-list'
 
 export const getServerSideProps = async () => {
     const recipesResult: ApolloQueryResult<{ recipes: Recipe[] }> =
