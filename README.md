@@ -187,7 +187,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
     -   The bug doesn't happend when the App recompile after a mutation
 -   [ ] Learn more about Apollo & GraphQL (_notably cache management_)
 -   [ ] Refactor/Add Typescript (_notably Formik, ApolloClient, NextJS_)
--   [ ] Use Recoil to manage a number count
+-   [x] Use Recoil to manage a number count
+-   [ ] How to update the types (Typescript) acccordingly to the GraphQL "client-query"
+-   [ ] Performance issue with TTFB while fetching info using GraphQL "cook-book" "recipe" find where does come from the latency:  
+     - 1️⃣ Apollo cache ? (_again_)  
+     - 2️⃣ Database latency ?
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
