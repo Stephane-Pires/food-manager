@@ -95,7 +95,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 -   [Next.js](https://nextjs.org/)
 -   [React.js](https://reactjs.org/)
 -   [ChakraUI](https://chakra-ui.com)
--   [Sqlite](https://www.sqlite.org/index.html)
+-   [PostgreSQL](https://www.postgresql.org)
 -   [Apollo](https://www.apollographql.com)
 -   [Prisma](https://www.prisma.io)
 -   [Nexus](https://nexusjs.org)
@@ -105,7 +105,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ## Notes
 
--   Adding <QueryResult> to a page that is statically rendered is probably useless since the loading state will always be false. _The loading will be done at build time_. I project to use SSR so... it's not gonna be a problem long term wise
+-   Adding <QueryResult> to a page that is statically rendered is probably useless since the loaded state will always be false. _The loading will be done at build time_. I project to use SSR so... it's not gonna be a problem long term wise
 
 Commit related :  
 [d96817f4716a0d2cffe95c075513ad56d5df7714]() [d8dff92493a77127edc1cc19087a636d0a6022ab]()
@@ -164,7 +164,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 
 -   [ ] Cook book
 -   [ ] Dynamic recipe visualisation
--   [ ] Capacity to add recipe with a form (FORMIK)
+-   [x] Capacity to add recipe with a form (FORMIK)
 
 ### Dev checklist
 
@@ -188,10 +188,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 -   [ ] Learn more about Apollo & GraphQL (_notably cache management_)
 -   [ ] Refactor/Add Typescript (_notably Formik, ApolloClient, NextJS_)
 -   [x] Use Recoil to manage a number count
--   [ ] How to update the types (Typescript) acccordingly to the GraphQL "client-query"
--   [ ] Performance issue with TTFB while fetching info using GraphQL "cook-book" "recipe" find where does come from the latency:  
-     - 1️⃣ Apollo cache ? (_again_)  
-     - 2️⃣ Database latency ?
+-   [ ] How to update the types (Typescript) acccordingly to the GraphQL "client-query"  
+         - [ ] Create a "Typed" folder with utils type from typescript ?
+-   [ ] Performance issue with TTFB while fetching info using GraphQL "cook-book" "recipe" find where does come from the latency:
+    -   1️⃣ Apollo cache ? (_again_)
+    -   2️⃣ Database latency ?
+-   [ ] React "key" console error with the drawer
 <!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
