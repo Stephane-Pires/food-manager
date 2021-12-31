@@ -1,8 +1,8 @@
 import { atom } from 'recoil'
 
-const plannedRecipesCountState = atom({
-    key: 'plannedRecipesCountState', // unique ID (with respect to other atoms/selectors)
-    default: 0, // default value (aka initial value)
+const pickedRecipesState = atom({
+    key: 'pickedRecipesState', // unique ID (with respect to other atoms/selectors)
+    default: [], // default value (aka initial value)
 })
 
-export default plannedRecipesCountState
+export default pickedRecipesState
