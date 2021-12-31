@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import useEnumInfo from '@utils/hooks'
 
-import plannedRecipesCountState from '@lib/recoil/atoms'
+import pickedRecipesState from '@lib/recoil/atoms'
 
 import { Button } from '@chakra-ui/button'
 import { Box, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
@@ -19,13 +19,12 @@ function RecipeCard({
     recipe: Recipe
 }) {
     const { color } = useEnumInfo(service)
-    const [plannedRecipesCount, setPlannedRecipesCount] = useRecoilState(
-        plannedRecipesCountState
-    )
+    const [pickedRecipes, setPickedRecipes] = useRecoilState(pickedRecipesState)
 
     const handleClick = () => {
-        setPlannedRecipesCount(plannedRecipesCount + 1)
+        setPickedRecipes(pickedRecipes.concat([name]))
     }
+
     return (
         <Box
             height="30vh"
