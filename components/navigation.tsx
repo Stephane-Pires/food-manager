@@ -8,6 +8,7 @@ export const TITLE = {
     COOK_BOOK: 'Cook Book 📙',
     ADD_RECIPE: 'Add recipe ➕',
     SHOPPING_LIST: 'Shopping list 📝',
+    PLANNING: 'Planning 🗓',
 }
 
 function Navigation() {
@@ -37,6 +38,12 @@ function Navigation() {
             <BreadcrumbItem>
                 <Link href="/shopping-list" passHref>
                     <BreadcrumbLink>{TITLE.SHOPPING_LIST}</BreadcrumbLink>
+                </Link>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+                <Link href="/planning" passHref>
+                    <BreadcrumbLink>{TITLE.PLANNING}</BreadcrumbLink>
                 </Link>
             </BreadcrumbItem>
         </Breadcrumb>
