@@ -16,9 +16,11 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
-    Text,
     useDisclosure,
+    VStack,
 } from '@chakra-ui/react'
+
+import RecipeCartCard from './recipe/recipe-cart-card'
 
 function Cart() {
     const pickedRecipesCount = useRecoilValue(pickedRecipesCountState)
@@ -57,9 +59,16 @@ function Cart() {
                     <DrawerHeader>Recipes picked</DrawerHeader>
 
                     <DrawerBody>
-                        {pickedRecipes.map((pickedRecipe) => (
-                            <Text key={pickedRecipe}>{pickedRecipe}</Text>
-                        ))}
+                        <VStack spacing={10}>
+                            {pickedRecipes.map(({ name, service, count }) => (
+                                <RecipeCartCard
+                                    name={name}
+                                    key={name}
+                                    count={count}
+                                    service={service}
+                                />
+                            ))}
+                        </VStack>
                     </DrawerBody>
 
                     <DrawerFooter>
@@ -67,6 +76,7 @@ function Cart() {
                             variant="outline"
                             mr={3}
                             onClick={handleClickReset}
+                            colorScheme="red"
                         >
                             Reset
                         </Button>

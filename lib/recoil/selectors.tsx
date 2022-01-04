@@ -7,7 +7,10 @@ const pickedRecipesCountState = selector({
     get: ({ get }) => {
         const pickedRecipes = get(pickedRecipesState)
 
-        return pickedRecipes.length
+        return pickedRecipes.reduce(
+            (accumulator, pickedRecipe) => accumulator + pickedRecipe.count,
+            0
+        )
     },
 })
 

@@ -21,8 +21,30 @@ function RecipeCard({
     const { color } = useEnumInfo(service)
     const [pickedRecipes, setPickedRecipes] = useRecoilState(pickedRecipesState)
 
+    // ugly code to change
+    const addPickedRecipe = () => {
+        if (pickedRecipes.some((pickedRecipe) => pickedRecipe.name === name)) {
+            setPickedRecipes(
+                pickedRecipes.map((pickedRecipe) => {
+                    if (pickedRecipe.name === name) {
+                        return {
+                            ...pickedRecipe,
+                            count: pickedRecipe.count + 1,
+                        }
+                    }
+                    return pickedRecipe
+                })
+            )
+        } else {
+            setPickedRecipes(
+                pickedRecipes.concat([{ name, service, count: 1 }])
+            )
+        }
+    }
+
+    // ugly code to change
     const handleClick = () => {
-        setPickedRecipes(pickedRecipes.concat([name]))
+        addPickedRecipe()
     }
 
     return (
