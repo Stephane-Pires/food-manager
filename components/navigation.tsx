@@ -7,6 +7,7 @@ export const TITLE = {
     HOME: 'Stack 🚀',
     COOK_BOOK: 'Cook Book 📙',
     ADD_RECIPE: 'Add recipe ➕',
+    SHOPPING_LIST: 'Shopping list 📝',
 }
 
 function Navigation() {
@@ -27,9 +28,15 @@ function Navigation() {
                 </Link>
             </BreadcrumbItem>
 
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem>
                 <Link href="/add-recipe" passHref>
                     <BreadcrumbLink>{TITLE.ADD_RECIPE}</BreadcrumbLink>
+                </Link>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+                <Link href="/shopping-list" passHref>
+                    <BreadcrumbLink>{TITLE.SHOPPING_LIST}</BreadcrumbLink>
                 </Link>
             </BreadcrumbItem>
         </Breadcrumb>
