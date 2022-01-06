@@ -4,6 +4,7 @@ import { Center, Divider, Flex, Text } from '@chakra-ui/layout'
 
 import Layout from '@components/layout'
 import { TITLE } from '@components/navigation'
+import DropZone from '@components/plannificator/TMP_drop-zone'
 
 export default function Planning() {
     return (
@@ -18,7 +19,7 @@ export default function Planning() {
                 </Flex>
             </Center>
             <Center>
-                <div>A super cool plannificator</div>
+                <DropZone />
             </Center>
         </Layout>
     )

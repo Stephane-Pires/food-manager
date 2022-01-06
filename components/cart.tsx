@@ -1,6 +1,8 @@
 import { useRef } from 'react'
+import { useDrag } from 'react-dnd'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
+import ItemTypes from '@lib/react-dnd/types'
 import pickedRecipesState from '@lib/recoil/atoms'
 import pickedRecipesCountState from '@lib/recoil/selectors'
 
@@ -15,11 +17,11 @@ import {
     DrawerContent,
     DrawerFooter,
     DrawerHeader,
-    DrawerOverlay,
     useDisclosure,
     VStack,
 } from '@chakra-ui/react'
 
+import DropZone from './plannificator/TMP_drop-zone'
 import RecipeCartCard from './recipe/recipe-cart-card'
 
 function Cart() {
@@ -33,8 +35,20 @@ function Cart() {
         setPickedRecipes([])
     }
 
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: ItemTypes.RECIPE_CART_CARD,
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging(),
+        }),
+    }))
+
     return (
-        <>
+        <div
+            ref={drag}
+            style={{
+                opacity: isDragging ? 0.5 : 1,
+            }}
+        >
             <Avatar
                 boxSize="3em"
                 icon={<AttachmentIcon fontSize="1.5rem" />}
@@ -48,12 +62,13 @@ function Cart() {
             </Avatar>
 
             <Drawer
+                trapFocus={false}
                 isOpen={isOpen}
                 placement="right"
                 onClose={onClose}
                 finalFocusRef={btnRef}
             >
-                <DrawerOverlay />
+                {/* <DrawerOverlay /> */}
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>Recipes picked</DrawerHeader>
@@ -69,6 +84,7 @@ function Cart() {
                                 />
                             ))}
                         </VStack>
+                        <DropZone />
                     </DrawerBody>
 
                     <DrawerFooter>
@@ -86,7 +102,7 @@ function Cart() {
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
-        </>
+        </div>
     )
 }
 
