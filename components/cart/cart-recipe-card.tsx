@@ -1,7 +1,9 @@
+import { useDrag } from 'react-dnd'
 import { useRecoilState } from 'recoil'
 
 import useEnumInfo from '@utils/hooks'
 
+import ItemTypes from '@lib/react-dnd/types'
 import pickedRecipesState from '@lib/recoil/atoms'
 
 import { IconButton } from '@chakra-ui/button'
@@ -9,7 +11,7 @@ import { AttachmentIcon, DeleteIcon } from '@chakra-ui/icons'
 import { HStack, Text } from '@chakra-ui/layout'
 import { Avatar, AvatarBadge } from '@chakra-ui/react'
 
-function RecipeCartCard({ name, service, count }) {
+function CartRecipeCard({ name, service, count }) {
     const { colorLight } = useEnumInfo(service)
 
     const [pickedRecipes, setPickedRecipes] = useRecoilState(pickedRecipesState)
@@ -37,6 +39,13 @@ function RecipeCartCard({ name, service, count }) {
         }
     }
 
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: ItemTypes.RECIPE_CART_CARD,
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging(),
+        }),
+    }))
+
     return (
         <HStack
             justifyContent="space-between"
@@ -46,6 +55,11 @@ function RecipeCartCard({ name, service, count }) {
             backgroundColor={colorLight}
             width="100%"
             borderColor="gray.800"
+            style={{
+                opacity: isDragging ? 0.5 : 1,
+            }}
+            ref={drag}
+            cursor="move"
         >
             <Avatar
                 boxSize="2em"
@@ -76,4 +90,4 @@ function RecipeCartCard({ name, service, count }) {
     )
 }
 
-export default RecipeCartCard
+export default CartRecipeCard

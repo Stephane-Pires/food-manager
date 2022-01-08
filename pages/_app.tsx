@@ -1,3 +1,5 @@
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import { RecoilRoot } from 'recoil'
 
 import { AppProps } from 'next/app'
@@ -14,10 +16,12 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <ApolloProvider client={client}>
             <RecoilRoot>
-                <ChakraProvider>
-                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                    <Component {...pageProps} />
-                </ChakraProvider>
+                <DndProvider backend={HTML5Backend}>
+                    <ChakraProvider>
+                        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                        <Component {...pageProps} />
+                    </ChakraProvider>
+                </DndProvider>
             </RecoilRoot>
         </ApolloProvider>
     )

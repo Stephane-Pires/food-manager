@@ -1,5 +1,7 @@
 import { Diet, Service, Stack } from '@prisma/client'
 
+import unreachable from './error-management'
+
 export enum EnumKey {
     SERVICE = 'Service',
     DIET = 'Diet',
@@ -15,7 +17,7 @@ export function getEnumFromEnumKey(enumKey: EnumKey) {
         case EnumKey.STACK:
             return Stack
         default:
-            return 'Return a proper error :/'
+            return unreachable(enumKey)
     }
 }
 
@@ -44,5 +46,5 @@ export function reduceEnumItem(enumItem, ifService, ifDiet, ifStack) {
         return ifStack(enumItem)
     }
 
-    return 'Return a proper error :/'
+    throw new Error('reduceEnumItem can not reduce this enumItem')
 }
