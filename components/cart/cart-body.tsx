@@ -1,7 +1,6 @@
 import { Box, VStack } from '@chakra-ui/react'
 
 import RecipeCartCard from '@components/cart/cart-recipe-card'
-import DropZone from '@components/plannificator/TMP_drop-zone'
 
 function CartBody({ pickedRecipes }) {
     return (
@@ -16,7 +15,6 @@ function CartBody({ pickedRecipes }) {
                     />
                 ))}
             </VStack>
-            <DropZone />
         </Box>
     )
 }
