@@ -11,7 +11,7 @@ import { AttachmentIcon, DeleteIcon } from '@chakra-ui/icons'
 import { HStack, Text } from '@chakra-ui/layout'
 import { Avatar, AvatarBadge } from '@chakra-ui/react'
 
-function RecipeCartCard({ name, service, count }) {
+function CartRecipeCard({ name, service, count }) {
     const { colorLight } = useEnumInfo(service)
 
     const [pickedRecipes, setPickedRecipes] = useRecoilState(pickedRecipesState)
@@ -90,4 +90,4 @@ function RecipeCartCard({ name, service, count }) {
     )
 }
 
-export default RecipeCartCard
+export default CartRecipeCard
