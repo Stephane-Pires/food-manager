@@ -12,7 +12,7 @@ function CartHeader({ onClose }) {
             padding={4}
             justifyContent="space-between"
         >
-            <Heading size="md">MY CART HEADER</Heading>
+            <Heading size="md">Picked Recipes</Heading>
             <IconButton
                 size="sm"
                 variant="outline"
